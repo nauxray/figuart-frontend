@@ -8,6 +8,9 @@ module.exports = {
         yellowLight: "#F1E9B2",
         red: "#924949",
       },
+      fontFamily: {
+        header: ["Prosto One"],
+      },
     },
   },
   plugins: [],
