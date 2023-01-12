@@ -18,10 +18,10 @@ const Navbar = () => {
   console.log("user", user);
 
   const fetchUser = async (token) => {
-    const tokens = token.split(".");
-    const userId = JSON.parse(atob(tokens[1])).userId;
-    const user = await new Api()?.getUser(userId);
-    setUser(user);
+    // const tokens = token.split(".");
+    // const userId = JSON.parse(atob(tokens[1])).userId;
+    // const user = await new Api()?.getUser(userId);
+    // setUser(user);
   };
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const Navbar = () => {
               className="mx-auto mt-0 mb-6"
               onClick={closeSideNav}
             >
-              <Button text={"Sign in"} withArrow />
+              <Button text={"Sign in"} withIcon />
             </Link>
           )}
           <Link to="/" onClick={closeSideNav}>
@@ -102,7 +102,7 @@ const Navbar = () => {
         </div>
         {!user && (
           <div className="absolute bottom-8 left-[calc(50%-56px)]">
-            <Button clickHandler={logout} text={"Log out"} withArrow />
+            <Button clickHandler={logout} text={"Log out"} withIcon />
           </div>
         )}
       </nav>
@@ -131,7 +131,7 @@ const Navbar = () => {
             </>
           ) : (
             <Link to="/login">
-              <Button text={"Sign in"} withArrow />
+              <Button text={"Sign in"} withIcon />
             </Link>
           )}
         </div>
