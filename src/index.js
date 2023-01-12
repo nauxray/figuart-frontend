@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import App from "./App";
+import Footer from "./components/Footer";
 import UserProvider from "./context/userContext";
 import reportWebVitals from "./reportWebVitals";
 
@@ -15,6 +16,7 @@ root.render(
     <BrowserRouter>
       <UserProvider>
         <App />
+        <Footer />
         <ToastContainer
           position="top-center"
           autoClose={3000}
