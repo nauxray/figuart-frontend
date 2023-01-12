@@ -1,7 +1,9 @@
+import Navbar from "./components/Navbar";
+
 function App() {
   return (
-    <div className="p-4">
-      <h1 className="text-lilac text-3xl">testing!!!</h1>
+    <div className="p-4 text-white">
+      <Navbar />
     </div>
   );
 }
