@@ -5,17 +5,18 @@ const Button = ({
   text,
   clickHandler,
   className: classnames = "",
-  withArrow = false,
+  withIcon = false,
+  customIcon = <BsArrowRight />,
 }) => {
   return (
     <button
       className={`bg-lilac cursor-pointer py-1 px-2 text-sm md:text-base min-w-[7rem] text-black font-medium transition hover:opacity-95 rounded border-2 border-white ${classnames} ${
-        withArrow ? "flex justify-between gap-1 items-center" : ""
+        withIcon ? "flex justify-between gap-1 items-center" : ""
       }`}
       onClick={clickHandler}
     >
       {text}
-      {withArrow && <BsArrowRight />}
+      {withIcon && customIcon}
     </button>
   );
 };
