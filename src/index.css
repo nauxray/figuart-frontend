@@ -24,6 +24,10 @@ code {
     monospace;
 }
 
+:root {
+  --lilac: #bbaec6;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 8px;
@@ -33,7 +37,7 @@ code {
   border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #bbaec6;
+  background: var(--lilac);
   border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb:hover {
