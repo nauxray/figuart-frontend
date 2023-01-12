@@ -61,7 +61,7 @@ const Home = () => {
       ) : (
         <>
           <div id="top5" className="">
-            <div className="flex gap-2 justify-center mb-2 items-center">
+            <div className="flex gap-2 justify-center mb-6 items-center">
               <img src="/assets/icons/like.svg" alt="like" className="inline" />
               <h1 className="font-header text-3xl">Top Products</h1>
             </div>
@@ -72,7 +72,7 @@ const Home = () => {
             </div>
           </div>
           <div id="featured" className="mt-8">
-            <div className="flex gap-2 justify-center mb-2 items-center">
+            <div className="flex gap-2 justify-center mb-6 items-center">
               <img src="/assets/icons/star.svg" alt="star" className="inline" />
               <h1 className="font-header text-3xl">Featured Sellers</h1>
             </div>
