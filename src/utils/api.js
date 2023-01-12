@@ -39,6 +39,15 @@ export default class Api extends ApiClient {
       return null;
     }
   };
+  getProduct = async (id) => {
+    try {
+      const results = await this.init()?.get(`products/${id}`);
+      return results.data;
+    } catch (err) {
+      handleError(err);
+      return null;
+    }
+  };
   getTopProducts = async () => {
     try {
       const results = await this.init()?.get("products", {
