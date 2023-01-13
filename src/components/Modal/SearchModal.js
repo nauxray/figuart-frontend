@@ -19,14 +19,17 @@ const SearchModal = ({
     setFilters(newFilters);
   };
 
-  const clearFilters = () => setFilters({});
+  const clearFilters = () => {
+    setFilters({});
+    hide();
+  };
 
   return (
     <Modal isShowing={isShowing} hide={hide}>
       <h2 className="font-semibold text-lilac text-xl mb-4">Filters</h2>
       <div className="flex flex-col gap-3">
-        <div className="flex gap-2 items-center">
-          <label className="w-20">Min Price</label>
+        <div className="flex gap-2 items-center flex-wrap">
+          <label className="w-20">Min Price:</label>
           <input
             className="text-black mr-2 box-border w-20 bg-lilac rounded-md px-2 py-1 border-2 border-white outline-none"
             type={"number"}
@@ -36,19 +39,21 @@ const SearchModal = ({
               updateFilters(parseInt(e.target.value), "minPrice")
             }
           />
-          <label className="w-20">Max Price</label>
-          <input
-            className="text-black box-border w-20 bg-lilac rounded-md px-2 py-1 border-2 border-white outline-none"
-            type={"number"}
-            min={0}
-            value={filters?.maxPrice ?? 0}
-            onChange={(e) =>
-              updateFilters(parseInt(e.target.value), "maxPrice")
-            }
-          />
+          <div className="flex gap-2 items-center">
+            <label className="w-20">Max Price:</label>
+            <input
+              className="text-black box-border w-20 bg-lilac rounded-md px-2 py-1 border-2 border-white outline-none"
+              type={"number"}
+              min={0}
+              value={filters?.maxPrice ?? 0}
+              onChange={(e) =>
+                updateFilters(parseInt(e.target.value), "maxPrice")
+              }
+            />
+          </div>
         </div>
         <div className="flex gap-2 items-center">
-          <label className="w-20">Quantity</label>
+          <label className="w-20">Quantity:</label>
           <input
             className="text-black box-border w-20 bg-lilac rounded-md px-2 py-1 border-2 border-white outline-none"
             type={"number"}
@@ -60,7 +65,7 @@ const SearchModal = ({
           />
         </div>
         <div className="flex gap-2 items-center">
-          <label className="w-20">Limit</label>
+          <label className="w-20">Limit:</label>
           <input
             className="text-black box-border w-20 bg-lilac rounded-md px-2 py-1 border-2 border-white outline-none"
             type={"number"}
@@ -71,7 +76,9 @@ const SearchModal = ({
         </div>
       </div>
       <div className="mt-8 flex gap-4 items-center">
-        <h2 className="font-semibold text-lilac text-xl w-20">Sort</h2>
+        <h2 className="font-semibold text-lilac text-xl flex-shrink-0">
+          Sort By:
+        </h2>
         <select
           className="text-black box-border w-full text-center bg-lilac rounded-md px-2 py-1 border-2 border-white outline-none"
           value={filters?.sortBy ?? sortOptions[0].key}

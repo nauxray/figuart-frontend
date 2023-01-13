@@ -3,6 +3,7 @@ import { CiSearch } from "react-icons/ci";
 
 import useModal from "../hooks/useModal";
 import Api from "../utils/api";
+import Layout from "./Layout/Layout";
 import Loader from "./Loader";
 import SearchModal from "./Modal/SearchModal";
 import ProductCard from "./ProductCard";
@@ -55,17 +56,27 @@ const Home = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto">
+    <Layout className="w-11/12 mt-20 md:mt-10">
       {/* search bar */}
-      <div className="w-4/5 mx-auto">
+      <div className="w-full md:w-3/4 mx-auto">
         <h1 className="font-header text-3xl mb-2">Search...</h1>
         <div className="bg-lilac rounded-lg overflow-hidden flex items-center pr-2">
           <input
             className="text-black box-border flex-1 outline-none mx-2 ml-4 py-2 bg-transparent"
             value={searchName}
             onChange={(e) => setSearchName(e.target.value)}
+            onKeyDown={(e) =>
+              e.key === "Enter" &&
+              searchName.trim().length > 0 &&
+              searchProducts()
+            }
           />
-          <CiSearch size={30} color={"black"} />
+          <CiSearch
+            size={30}
+            color={"black"}
+            className="cursor-pointer"
+            onClick={() => searchName.trim().length > 0 && searchProducts()}
+          />
         </div>
         <div
           className="flex mt-2 cursor-pointer w-fit ml-auto"
@@ -88,7 +99,10 @@ const Home = () => {
         hide={toggle}
         filters={filters}
         setFilters={setFilters}
-        searchProducts={searchProducts}
+        searchProducts={() => {
+          searchProducts();
+          toggle();
+        }}
       />
       {/* end search bar */}
 
@@ -101,7 +115,8 @@ const Home = () => {
         searchResults !== null && (
           <div>
             <h1 className="font-header text-2xl text-center mb-4">
-              {searchResults?.length ?? 0} Search Results
+              {searchResults?.length ?? 0} Product
+              {searchResults?.length === 1 ? "" : "s"} Found{" "}
             </h1>
             <div className="flex flex-wrap gap-2">
               {searchResults?.map((product) => (
@@ -141,7 +156,7 @@ const Home = () => {
           </div>
         </>
       )}
-    </div>
+    </Layout>
   );
 };
 
