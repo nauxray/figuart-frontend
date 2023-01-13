@@ -2,7 +2,7 @@ import React from "react";
 
 const SellerCard = ({ shop }) => {
   return (
-    <div className="bg-black border-2 flex flex-col border-lilac rounded-md overflow-hidden max-w-[70%] mx-auto">
+    <div className="bg-black border-2 flex flex-col border-lilac rounded-md overflow-hidden md:max-w-[70%] mx-auto">
       <div className="flex flex-col flex-1 p-2">
         <div className="flex gap-2 items-center">
           <img
