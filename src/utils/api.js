@@ -96,8 +96,10 @@ export default class Api extends ApiClient {
       return null;
     }
   };
-  login = async () => {
+  login = async (formData) => {
     try {
+      const response = await this.init()?.post("users/login", formData);
+      return response;
     } catch (err) {
       handleError(err);
       return err.response;
@@ -105,6 +107,9 @@ export default class Api extends ApiClient {
   };
   logout = async () => {
     try {
+      const response = await this.init()?.get("users/logout");
+      console.log(response);
+      return response;
     } catch (err) {
       handleError(err);
       return err.response;
