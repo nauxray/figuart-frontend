@@ -1,25 +1,49 @@
-import React, { useContext, useState } from "react";
-import Layout from "./Layout/Layout";
-import Button from "./Button";
-import Api from "../utils/api";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { UserContext } from "../context/userContext";
+import Api from "../utils/api";
+import Button from "./Button";
+import Layout from "./Layout/Layout";
+import Loader from "./Loader";
 
 const SignIn = () => {
+  const navigate = useNavigate();
+  const { user, fetchUser } = useContext(UserContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const { fetchToken } = useContext(UserContext);
+  const [error, setError] = useState(false);
 
   const submitForm = async (e) => {
-    // setLoading(true);
+    setLoading(true);
     e.preventDefault();
     const api = new Api();
-    const formData = new FormData();
-    formData.append("email", "dasdsads");
-    formData.append("password", "fdsdfsdfsdf");
+    const res = await api.login({ email, password });
 
-    const res = await api.login(formData);
+    if (res.data.error) {
+      setLoading(false);
+      return setError(true);
+    }
+    if (res.data.user) {
+      localStorage.setItem("jwtToken", res.data.token);
+      fetchUser(res.data.user.id, "id");
+      return navigate("/");
+    }
   };
+
+  useEffect(() => {
+    if (!!user) {
+      navigate("/");
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (error && (email.trim().length > 0 || password.trim().length > 0)) {
+      setError(false);
+    }
+  }, [email, password]);
 
   return (
     <Layout className="mt-20 px-8 lg:px-0">
@@ -38,7 +62,6 @@ const SignIn = () => {
               className="flex flex-col gap-3"
               onSubmit={(e) => submitForm(e)}
             >
-              {/* <input type="hidden" name="_csrf" value={cookies.csrfToken} /> */}
               <section className="flex items-center gap-2 flex-col sm:flex-row">
                 <label className="w-full sm:w-28">Email:</label>
                 <input
@@ -64,12 +87,20 @@ const SignIn = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </section>
-              <Button
-                disabled={loading}
-                text={"Sign in"}
-                className="mt-12 w-fit mx-auto min-w-[9rem]"
-                withIcon
-              />
+              {error && (
+                <p className="text-red text-sm text-right font-medium">
+                  Invalid credentials!
+                </p>
+              )}
+              {loading ? (
+                <Loader small className="mx-auto mt-12" />
+              ) : (
+                <Button
+                  text={"Sign in"}
+                  className="mt-12 w-fit mx-auto min-w-[9rem]"
+                  withIcon
+                />
+              )}
             </form>
           </div>
         </div>
