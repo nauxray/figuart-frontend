@@ -51,7 +51,9 @@ const ProductListing = () => {
             <section className="flex flex-col gap-4">
               <h1 className="font-header text-3xl">{product.name}</h1>
               <p className="-mt-2">Qty: {product.quantity} left</p>
-              <p className="text-yellowLight text-3xl">${product.price}</p>
+              <p className="text-yellowLight text-3xl">
+                ${parseFloat(product.price).toFixed(2)}
+              </p>
               <Button
                 clickHandler={addToCart}
                 className="gap-4 w-fit mt-4 px-4 py-1.5"
