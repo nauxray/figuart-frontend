@@ -7,7 +7,7 @@ export const handleError = (err) => {
 class ApiClient {
   constructor() {
     this.apiClient = null;
-    this.apiUrl = process.env.REACT_APP_API_URL ?? "";
+    this.apiUrl = `${process.env.REACT_APP_API_URL}api/` ?? "";
   }
 
   init = () => {
@@ -17,7 +17,7 @@ class ApiClient {
     }
 
     const headers = {
-      "content-type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("jwtToken") ?? "",
     };
 
     this.apiClient = axios.create({
@@ -89,16 +89,49 @@ export default class Api extends ApiClient {
       return null;
     }
   };
-  getUser = async () => {
+  getCart = async (id) => {
     try {
+      const results = await this.init()?.get(`cart/${id}`);
+      return results.data;
     } catch (err) {
       handleError(err);
       return null;
     }
   };
-  login = async (formData) => {
+  addToCart = async (id) => {
     try {
-      const response = await this.init()?.post("users/login", formData);
+      const res = await this.init()?.post(`cart/add/${id}`);
+      return res.data;
+    } catch (err) {
+      handleError(err);
+      return null;
+    }
+  };
+  removeFromCart = async (id) => {
+    try {
+      const res = await this.init()?.delete(`cart/remove/${id}`);
+      return res.data;
+    } catch (err) {
+      handleError(err);
+      return null;
+    }
+  };
+  getUser = async (id) => {
+    try {
+      const results = await this.init()?.get(`users/${id}/profile`);
+      return results.data;
+    } catch (err) {
+      handleError(err);
+      return null;
+    }
+  };
+  login = async (data) => {
+    try {
+      const response = await this.init()?.post("users/login", data, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
       return response;
     } catch (err) {
       handleError(err);
@@ -108,7 +141,6 @@ export default class Api extends ApiClient {
   logout = async () => {
     try {
       const response = await this.init()?.get("users/logout");
-      console.log(response);
       return response;
     } catch (err) {
       handleError(err);

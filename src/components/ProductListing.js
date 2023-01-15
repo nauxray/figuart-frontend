@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BiShoppingBag } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import Api from "../utils/api";
 import { formatDate } from "../utils/formatDate";
@@ -10,13 +11,14 @@ import Loader from "./Loader";
 const ProductListing = () => {
   const productId = useParams().id;
   const navigate = useNavigate();
+  const api = new Api();
 
   const [loading, setLoading] = useState(false);
+  const [addingToCart, setAddingToCart] = useState(false);
   const [product, setProduct] = useState(null);
 
   const fetchProduct = async () => {
     setLoading(true);
-    const api = new Api();
     const data = await api.getProduct(productId);
     setProduct(data);
     console.log(data);
@@ -28,8 +30,13 @@ const ProductListing = () => {
     fetchProduct();
   }, []);
 
-  const addToCart = () => {
-    alert("add to cart");
+  const addProductToCart = async () => {
+    setAddingToCart(true);
+    const res = await api.addToCart(productId);
+    setAddingToCart(false);
+    if (res.createdItemId) {
+      return toast.success(`Added ${product.name} to cart!`);
+    }
   };
 
   return (
@@ -50,10 +57,17 @@ const ProductListing = () => {
           <div className="flex-1">
             <section className="flex flex-col gap-4">
               <h1 className="font-header text-3xl">{product.name}</h1>
-              <p className="-mt-2">Qty: {product.quantity} left</p>
-              <p className="text-yellowLight text-3xl">${product.price}</p>
+              <p className="-mt-2">
+                {product.quantity <= 0
+                  ? "Sold out"
+                  : `Qty: ${product.quantity} left`}
+              </p>
+              <p className="text-yellowLight text-3xl">
+                ${parseFloat(product.price).toFixed(2)}
+              </p>
               <Button
-                clickHandler={addToCart}
+                disabled={addingToCart || product.quantity <= 0}
+                clickHandler={addProductToCart}
                 className="gap-4 w-fit mt-4 px-4 py-1.5"
                 text={"Add to cart"}
                 withIcon

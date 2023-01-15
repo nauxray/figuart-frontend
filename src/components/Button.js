@@ -12,7 +12,7 @@ const Button = ({
   return (
     <button
       disabled={disabled}
-      className={`bg-lilac cursor-pointer disabled:pointer-events-none py-1 px-2 disabled:bg-[#494150] text-sm md:text-base disabled:border-[#888888] min-w-[7rem] text-black font-medium transition hover:opacity-95 rounded border-2 border-white ${classnames} ${
+      className={`bg-lilac cursor-pointer disabled:pointer-events-none py-1 px-2 disabled:bg-disabledGrey text-sm md:text-base disabled:border-disabledBorderGrey min-w-[7rem] text-black font-medium transition hover:opacity-95 rounded border-2 border-white ${classnames} ${
         withIcon ? "flex justify-between gap-1 items-center" : ""
       }`}
       onClick={clickHandler}
