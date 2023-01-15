@@ -139,7 +139,7 @@ const Home = () => {
               <img src="/assets/icons/like.svg" alt="like" className="inline" />
               <h1 className="font-header text-3xl">Top Products</h1>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 justify-center">
               {topProducts?.map((product) => (
                 <ProductCard key={"top" + product.id} product={product} />
               ))}

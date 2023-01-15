@@ -86,7 +86,7 @@ const Cart = () => {
     setDisabled(true);
     const item = groupedCart[key][index];
     await new Api().removeFromCart(item.product_id);
-    toast.success(`Removed ${item.name} from your cart!`);
+    toast.success(`Removed ${item.product.name} from your cart!`);
     await fetchCartItems();
     setDisabled(false);
   };
