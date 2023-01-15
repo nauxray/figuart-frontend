@@ -107,6 +107,15 @@ export default class Api extends ApiClient {
       return null;
     }
   };
+  removeFromCart = async (id) => {
+    try {
+      const res = await this.init()?.delete(`cart/remove/${id}`);
+      return res.data;
+    } catch (err) {
+      handleError(err);
+      return null;
+    }
+  };
   getUser = async (id) => {
     try {
       const results = await this.init()?.get(`users/${id}/profile`);
