@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiShoppingBag } from "react-icons/bi";
 import { CiSearch } from "react-icons/ci";
@@ -6,7 +6,6 @@ import { FiMenu } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 import { UserContext } from "../context/userContext";
-import Api from "../utils/api";
 import Button from "./Button";
 
 const Navbar = () => {
@@ -14,20 +13,7 @@ const Navbar = () => {
   const openSideNav = () => setNavOpen(true);
   const closeSideNav = () => setNavOpen(false);
 
-  const { user, setUser, logout } = useContext(UserContext);
-  console.log("user", user);
-
-  const fetchUser = async (token) => {
-    // const tokens = token.split(".");
-    // const userId = JSON.parse(atob(tokens[1])).userId;
-    // const user = await new Api()?.getUser(userId);
-    // setUser(user);
-  };
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) fetchUser(token);
-  }, []);
+  const { user, logout } = useContext(UserContext);
 
   return (
     <>
@@ -117,7 +103,7 @@ const Navbar = () => {
               <Link to="/account">
                 <div className="flex gap-2 items-center">
                   <img
-                    className="w-8 rounded-full"
+                    className="w-8 h-8 rounded-full"
                     alt="pfp"
                     src={user?.pfp ?? "/assets/default-avatar.jpg"}
                   />
