@@ -1,4 +1,5 @@
 import "./index.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -18,7 +19,7 @@ root.render(
         <App />
         <Footer />
         <ToastContainer
-          position="top-center"
+          position="top-right"
           autoClose={3000}
           hideProgressBar={false}
           newestOnTop={false}
