@@ -1,38 +1,8 @@
 # Figuart
 
 **Figuart** is an ecommerce website for people to buy figurines.
+
 Live Website: https://figuart.netlify.app
-
-## Features
-
-The main features of the website are as listed below:
-
-1. Browse through different yarns easily
-2. Sorting system (sort by alphabetical order, average rating, number of reviews)
-3. Filter and search system to narrow down yarns displayed
-   - Search by yarn name
-   - Filter by color, brand, weight, material
-4. Contribute yarn reviews, and ability to edit or delete a review
-5. View your past reviews to keep track of your progress
-6. Contribute yarn listings
-7. Create account and login with JWT Authentication
-8. Ability to change username/password
-
-Known bugs:
-
-Future features:
-
-1.  Ability to report a user or flag a review for spam, inappropriate content, etc.
-1.  Ability to upvote or downvote reviews
-1.  Ability to react to user reviews with emojis
-1.  Ability to reply to user reviews to facilitate discussion
-1.  Ability to view other users' profile to see the date they joined, reviews posted, etc.
-1.  Ability to add yarn to cart and purchase yarns
-1.  Ability to save/favorite/like a yarn
-1.  Retrieve username/password if user forgets
-1.  Ability to view yarns contributed
-1.  Add user profile picture
-1.  Better security measures for user password
 
 ## Technologies Used
 1. ReactJS for frontend
