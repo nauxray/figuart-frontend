@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Figuart
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Figuart** is an ecommerce website for people to buy figurines.
+Live Website: https://figuart.netlify.app
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+The main features of the website are as listed below:
 
-### `npm start`
+1. Browse through different yarns easily
+2. Sorting system (sort by alphabetical order, average rating, number of reviews)
+3. Filter and search system to narrow down yarns displayed
+   - Search by yarn name
+   - Filter by color, brand, weight, material
+4. Contribute yarn reviews, and ability to edit or delete a review
+5. View your past reviews to keep track of your progress
+6. Contribute yarn listings
+7. Create account and login with JWT Authentication
+8. Ability to change username/password
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Known bugs:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Future features:
 
-### `npm test`
+1.  Ability to report a user or flag a review for spam, inappropriate content, etc.
+1.  Ability to upvote or downvote reviews
+1.  Ability to react to user reviews with emojis
+1.  Ability to reply to user reviews to facilitate discussion
+1.  Ability to view other users' profile to see the date they joined, reviews posted, etc.
+1.  Ability to add yarn to cart and purchase yarns
+1.  Ability to save/favorite/like a yarn
+1.  Retrieve username/password if user forgets
+1.  Ability to view yarns contributed
+1.  Add user profile picture
+1.  Better security measures for user password
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
+1. ReactJS for frontend
+2. ExpressJS for backend REST API
+3. Postgres DB hosted on Render. used db-migrate to change from mysql to postgres db easily
 
-### `npm run build`
+### Libraries used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. react-router-dom: https://github.com/remix-run/react-router (for routing different pages & redirecting user)
+2. axios: https://github.com/axios/axios (to call various apis using the api utility class)
+3. react-icons: https://github.com/react-icons/react-icons (various icons throughout the app)
+4. dayjs: https://github.com/iamkun/dayjs (display date time)
+5. react-toastify: https://github.com/fkhadra/react-toastify 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Credits
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Decode JWT token without library](https://stackoverflow.com/questions/38552003/how-to-decode-jwt-token-in-javascript-without-using-a-library)
+- [Custom hook for reusable Modal component](https://upmostly.com/tutorials/modal-components-react-custom-hooks)
+- [Scroll to top on page change](https://stackoverflow.com/questions/36904185/react-router-scroll-to-top-on-every-transition)
+- [Fix react-router-dom page not found error after netlify deployment](https://www.freecodecamp.org/news/how-to-deploy-react-router-based-app-to-netlify/)
+- [Regex for checking valid image url](https://bobbyhadz.com/blog/javascript-check-if-url-is-image)
+- [Leo Tolstoy portrait image](https://www.history.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTU3ODc4Njg0ODUyOTU0NDQx/fb-tolstoy-2.jpg)
+- [Logo created using Canva, cat vector images from Canva](https://www.canva.com/design/DAFSqBjsPpI/X1CWMmWEWr0p_fyfaEkY1g/view?utm_content=DAFSqBjsPpI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+- [Favicon generator](https://favicon.io/)
+- [Disable blue highlight on mobile](https://stackoverflow.com/questions/25704650/disable-blue-highlight-when-touch-press-object-with-cursorpointer)
+- [Disable Google tap to search feature on mobile](https://stackoverflow.com/questions/60984046/how-to-disable-onclick-text-highlight-in-mobile-browser-chrome)
