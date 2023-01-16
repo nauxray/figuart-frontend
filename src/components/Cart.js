@@ -135,7 +135,7 @@ const Cart = () => {
 
                     return (
                       <div
-                        className="flex gap-3"
+                        className="flex gap-3 mb-4  "
                         key={prod.product.id + "_product"}
                       >
                         <img
