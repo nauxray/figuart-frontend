@@ -11,6 +11,8 @@ import Avatar from "./Common/Avatar";
 
 const Cart = () => {
   const { user } = useContext(UserContext);
+  const api = new Api();
+
   const [groupedCart, setGroupedCart] = useState({});
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
@@ -54,7 +56,7 @@ const Cart = () => {
 
   const fetchCartItems = async () => {
     setLoading(true);
-    const res = await new Api().getCart(user.id);
+    const res = await api.getCart(user.id);
     res.length > 0 ? groupByShop(res) : setGroupedCart({});
     setLoading(false);
   };
@@ -63,17 +65,23 @@ const Cart = () => {
     user?.id && fetchCartItems();
   }, [user]);
 
-  const incrementQty = (key, index, currentQty) => {
+  const incrementQty = async (key, index, currentQty) => {
     const newCart = { ...groupedCart };
-    newCart[key][index].buyQty = currentQty + 1;
-    setGroupedCart(newCart);
+    const res = await api.addToCart(newCart[key][index].product_id);
+    if (res.createdItemId) {
+      newCart[key][index].buyQty = currentQty + 1;
+      setGroupedCart(newCart);
+    }
   };
 
-  const decrementQty = (currentQty, key, index) => {
+  const decrementQty = async (currentQty, key, index) => {
     if (currentQty <= 1) return;
     const newCart = { ...groupedCart };
-    newCart[key][index].buyQty = currentQty - 1;
-    setGroupedCart(newCart);
+    const res = await api.removeOneFromCart(newCart[key][index].product_id);
+    if (res.status === 204) {
+      newCart[key][index].buyQty = currentQty - 1;
+      setGroupedCart(newCart);
+    }
   };
 
   const handleQtyChange = (e, key, index) => {
@@ -173,7 +181,7 @@ const Cart = () => {
                                 -
                               </button>
                               <input
-                                disabled={disabled}
+                                disabled={true}
                                 className="border-2 text-base border-lilac py-0.5 outline-none w-12 text-center rounded-md bg-black "
                                 type="number"
                                 min={1}

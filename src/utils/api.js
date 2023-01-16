@@ -109,8 +109,17 @@ export default class Api extends ApiClient {
   };
   removeFromCart = async (id) => {
     try {
-      const res = await this.init()?.delete(`cart/remove/${id}`);
+      const res = await this.init()?.delete(`cart/remove/product/${id}`);
       return res.data;
+    } catch (err) {
+      handleError(err);
+      return null;
+    }
+  };
+  removeOneFromCart = async (id) => {
+    try {
+      const res = await this.init()?.delete(`cart/remove/${id}`);
+      return res;
     } catch (err) {
       handleError(err);
       return null;
