@@ -2,7 +2,8 @@
 
 **Figuart** is an ecommerce website for people to buy figurines.
 
-Live Website: https://figuart.netlify.app
+Live Website(React frontend ecommerce site):[https://figuart.netlify.app](https://figuart.netlify.app)
+Live Website(Backend shop owner/admin portal): [https://figuart-backend.onrender.com](https://figuart-backend.onrender.com/)
 
 ## Technologies Used
 1. ReactJS for frontend
