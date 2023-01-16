@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../context/userContext";
 
 export default function Footer() {
-  const { user } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
 
   return (
     <>
@@ -37,12 +37,22 @@ export default function Footer() {
               <span>Account</span>
             </Link>
           )}
-          <Link
-            className="text-black h-fit w-fit transition duration-300 hover:text-white"
-            to="/login"
-          >
-            <span>Sign in</span>
-          </Link>
+          {user ? (
+            <Link
+              onClick={logout}
+              className="text-black h-fit w-fit transition duration-300 hover:text-white"
+              to="/login"
+            >
+              <span>Logout</span>
+            </Link>
+          ) : (
+            <Link
+              className="text-black h-fit w-fit transition duration-300 hover:text-white"
+              to="/login"
+            >
+              <span>Sign in</span>
+            </Link>
+          )}
         </div>
       </footer>
     </>
