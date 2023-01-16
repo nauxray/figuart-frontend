@@ -4,9 +4,10 @@ import { toast } from "react-toastify";
 
 import { UserContext } from "../context/userContext";
 import Api from "../utils/api";
-import Button from "./Button";
+import Button from "./Common/Button";
 import Layout from "./Layout/Layout";
-import Loader from "./Loader";
+import Loader from "./Common/Loader";
+import Avatar from "./Common/Avatar";
 
 const Cart = () => {
   const { user } = useContext(UserContext);
@@ -103,7 +104,7 @@ const Cart = () => {
   };
 
   return (
-    <Layout className="mt-20 md:mt-10 w-11/12">
+    <Layout>
       <div className="w-full md:w-3/4 gap-6 sm:gap-8 flex flex-col mx-auto">
         <div className="flex gap-4 items-center">
           <AiOutlineShoppingCart className="text-lilac text-5xl" />
@@ -122,12 +123,9 @@ const Cart = () => {
               <React.Fragment key={key}>
                 <div className="border-b border-lilac pb-8 overflow-hidden break-words">
                   <div className="flex gap-2 mb-4 items-center">
-                    <img
-                      className="w-9 h-9 rounded-full"
-                      alt="pfp"
-                      src={
-                        cartItems[0].product.pfp ?? "/assets/default-avatar.jpg"
-                      }
+                    <Avatar
+                      pfp={cartItems[0].product.pfp}
+                      className="w-9 h-9"
                     />
                     <span className="sm:text-lg text-base">{key}</span>
                   </div>

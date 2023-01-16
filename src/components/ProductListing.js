@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 
 import Api from "../utils/api";
 import { formatDate } from "../utils/formatDate";
-import Button from "./Button";
-import Loader from "./Loader";
+import Button from "./Common/Button";
+import Loader from "./Common/Loader";
 
 const ProductListing = () => {
   const productId = useParams().id;

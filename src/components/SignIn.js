@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import { UserContext } from "../context/userContext";
 import Api from "../utils/api";
-import Button from "./Button";
+import Button from "./Common/Button";
 import Layout from "./Layout/Layout";
-import Loader from "./Loader";
+import Loader from "./Common/Loader";
 
 const SignIn = () => {
   const navigate = useNavigate();

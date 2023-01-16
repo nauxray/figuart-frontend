@@ -4,7 +4,7 @@ import { CiSearch } from "react-icons/ci";
 import useModal from "../hooks/useModal";
 import Api from "../utils/api";
 import Layout from "./Layout/Layout";
-import Loader from "./Loader";
+import Loader from "./Common/Loader";
 import SearchModal from "./Modal/SearchModal";
 import ProductCard from "./ProductCard";
 import SellerCard from "./SellerCard";
@@ -56,7 +56,7 @@ const Home = () => {
   };
 
   return (
-    <Layout className="w-11/12 mt-20 md:mt-10">
+    <Layout>
       {/* search bar */}
       <div className="w-full md:w-3/4 mx-auto">
         <h1 className="font-header text-3xl mb-2">Search...</h1>

@@ -6,7 +6,8 @@ import { FiMenu } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 import { UserContext } from "../context/userContext";
-import Button from "./Button";
+import Avatar from "./Common/Avatar";
+import Button from "./Common/Button";
 
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
@@ -76,11 +77,7 @@ const Navbar = () => {
           {user && (
             <Link to="/account" onClick={closeSideNav}>
               <div className="flex gap-2 items-center">
-                <img
-                  className="w-8 rounded-full"
-                  alt="pfp"
-                  src={user?.pfp ?? "/assets/default-avatar.jpg"}
-                />
+                <Avatar pfp={user?.pfp} className="w-8 h-8" />
                 Account
               </div>
             </Link>
@@ -102,11 +99,7 @@ const Navbar = () => {
             <>
               <Link to="/account">
                 <div className="flex gap-2 items-center">
-                  <img
-                    className="w-8 h-8 rounded-full"
-                    alt="pfp"
-                    src={user?.pfp ?? "/assets/default-avatar.jpg"}
-                  />
+                  <Avatar pfp={user?.pfp} className="w-8 h-8" />
                   {user?.username ?? "Account"}
                 </div>
               </Link>

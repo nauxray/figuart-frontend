@@ -3,7 +3,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 
 import { sortOptions } from "../../utils/sortOptions";
-import Button from "../Button";
+import Button from "../Common/Button";
 import Modal from "./Modal";
 
 const SearchModal = ({
