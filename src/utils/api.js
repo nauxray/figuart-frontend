@@ -89,6 +89,8 @@ export default class Api extends ApiClient {
       return null;
     }
   };
+
+  // cart apis
   getCart = async (id) => {
     try {
       const results = await this.init()?.get(`cart/${id}`);
@@ -125,6 +127,34 @@ export default class Api extends ApiClient {
       return null;
     }
   };
+  checkout = async () => {
+    try {
+      const response = await this.init()?.get("checkout");
+      return response;
+    } catch (err) {
+      handleError(err);
+      return err.response;
+    }
+  };
+  handleCheckoutSuccess = async (sessionId) => {
+    try {
+      const response = await this.init()?.post(
+        "checkout/success",
+        { sessionId },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+      return response;
+    } catch (err) {
+      handleError(err);
+      return err.response;
+    }
+  };
+
+  // user apis
   getUser = async (id) => {
     try {
       const results = await this.init()?.get(`users/${id}/profile`);

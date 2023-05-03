@@ -15,6 +15,7 @@ const Cart = () => {
 
   const [groupedCart, setGroupedCart] = useState({});
   const [loading, setLoading] = useState(false);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
 
   const groupByShop = (cart) => {
@@ -94,7 +95,7 @@ const Cart = () => {
   const removeItem = async (key, index) => {
     setDisabled(true);
     const item = groupedCart[key][index];
-    await new Api().removeFromCart(item.product_id);
+    await api.removeFromCart(item.product_id);
     toast.success(`Removed ${item.product.name} from your cart!`);
     await fetchCartItems();
     setDisabled(false);
@@ -104,11 +105,18 @@ const Cart = () => {
     let total = 0;
     Object.values(groupedCart).forEach((itemsArr) =>
       itemsArr.forEach((product) => {
-        total += product.buyQty * parseFloat(product.product.price);
+        total += product.buyQty * +product.product.price;
       })
     );
 
     return isNaN(total.toFixed(2)) ? 0 : total.toFixed(2);
+  };
+
+  const checkout = async () => {
+    setCheckoutLoading(true);
+    setDisabled(true);
+    const { data: paymentData } = await api.checkout();
+    return window.location.replace(paymentData.url);
   };
 
   return (
@@ -212,8 +220,9 @@ const Cart = () => {
                       Total: ${getTotalPrice()}
                     </span>
                     <Button
+                      clickHandler={checkout}
                       disabled={disabled}
-                      text={"Check out"}
+                      text={checkoutLoading ? "Loading..." : "Check out"}
                       withIcon
                       className="w-40"
                     />
