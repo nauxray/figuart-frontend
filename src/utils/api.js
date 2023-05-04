@@ -186,8 +186,14 @@ export default class Api extends ApiClient {
       return err.response;
     }
   };
-  createAcc = async () => {
+  createAcc = async (data) => {
     try {
+      const response = await this.init()?.post("users/create", data, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
+      return response;
     } catch (err) {
       handleError(err);
       return err.response;

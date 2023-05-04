@@ -9,6 +9,7 @@ import ProductListing from "./components/ProductListing";
 import SignIn from "./components/SignIn";
 import CheckoutSuccess from "./components/CheckoutSuccess";
 import CheckoutError from "./components/CheckoutError";
+import SignUp from "./components/SignUp";
 
 function App() {
   const { pathname } = useLocation();
@@ -24,6 +25,7 @@ function App() {
         <Route path="/product/:id" element={<ProductListing />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/account" element={<Account />} />
         <Route path="/checkout/success" element={<CheckoutSuccess />} />
