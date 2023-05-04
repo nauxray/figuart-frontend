@@ -5,7 +5,7 @@ const Avatar = ({ pfp, className: classnames = "" }) => {
     <img
       className={"rounded-full " + classnames}
       alt="avatar"
-      src={pfp ?? "/assets/default-avatar.jpg"}
+      src={pfp.length > 0 ? pfp : "/assets/default-avatar.jpg"}
     />
   );
 };

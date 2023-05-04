@@ -7,11 +7,11 @@ const ProductCard = ({ product }) => {
   return (
     <Link
       to={`/product/${product.id}`}
-      className="bg-black border-2 flex flex-col border-lilac rounded-md overflow-hidden max-h-[20rem] xl:w-[18rem] sm:w-[15rem] w-full  max-md:mx-auto cursor-pointer hover:scale-105 transition-all duration-300"
+      className="bg-black border-2 flex flex-col max-h-[28rem] border-lilac rounded-md overflow-hidden md:max-h-80 xl:w-[18rem] sm:w-[15rem] w-full max-md:mx-auto cursor-pointer hover:scale-105 transition-all duration-300"
     >
-      <div className="h-[50%] overflow-hidden bg-lilac flex items-center justify-center">
+      <div className="h-2/3 md:h-1/2 overflow-hidden bg-lilac flex items-center justify-center">
         {imgError ? (
-          <div className="">No Photo</div>
+          <div>No Photo</div>
         ) : (
           <img
             onError={() => setImgError(true)}
