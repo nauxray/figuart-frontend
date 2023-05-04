@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiShoppingBag } from "react-icons/bi";
 import { CiSearch } from "react-icons/ci";
@@ -14,7 +14,7 @@ const Navbar = () => {
   const openSideNav = () => setNavOpen(true);
   const closeSideNav = () => setNavOpen(false);
 
-  const { user, logout } = useContext(UserContext);
+  const { user, logout, cart } = useContext(UserContext);
 
   return (
     <>
@@ -103,7 +103,12 @@ const Navbar = () => {
                   {user?.username ?? "Account"}
                 </div>
               </Link>
-              <Link to="/cart">
+              <Link to="/cart" className="relative">
+                {cart.length > 0 && (
+                  <div className="font-semibold text-xs absolute top-[-0.8rem] right-[-0.5rem] bg-lilac rounded-md h-fit w-fit px-1 text-black border-white border">
+                    {cart.length}
+                  </div>
+                )}
                 <BiShoppingBag size={25} className="text-lilac" />
               </Link>
               <Button clickHandler={logout} text={"Log out"} />

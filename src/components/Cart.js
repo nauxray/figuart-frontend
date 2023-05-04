@@ -10,7 +10,7 @@ import Loader from "./Common/Loader";
 import Avatar from "./Common/Avatar";
 
 const Cart = () => {
-  const { user } = useContext(UserContext);
+  const { user, cart, getUserCart } = useContext(UserContext);
   const api = new Api();
 
   const [groupedCart, setGroupedCart] = useState({});
@@ -18,7 +18,7 @@ const Cart = () => {
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
 
-  const groupByShop = (cart) => {
+  const groupByShop = () => {
     const grouped = {};
 
     cart.forEach((item) => {
@@ -57,10 +57,13 @@ const Cart = () => {
 
   const fetchCartItems = async () => {
     setLoading(true);
-    const res = await api.getCart(user.id);
-    res.length > 0 ? groupByShop(res) : setGroupedCart({});
-    setLoading(false);
+    await getUserCart();
   };
+  
+  useEffect(() => {
+    cart.length > 0 ? groupByShop() : setGroupedCart({});
+    setLoading(false);
+  }, [cart]);
 
   useEffect(() => {
     user?.id && fetchCartItems();
@@ -72,6 +75,7 @@ const Cart = () => {
     if (res.createdItemId) {
       newCart[key][index].buyQty = currentQty + 1;
       setGroupedCart(newCart);
+      getUserCart();
     }
   };
 
@@ -82,6 +86,7 @@ const Cart = () => {
     if (res.status === 204) {
       newCart[key][index].buyQty = currentQty - 1;
       setGroupedCart(newCart);
+      getUserCart();
     }
   };
 
@@ -90,6 +95,7 @@ const Cart = () => {
     const newCart = { ...groupedCart };
     newCart[key][index].buyQty = val;
     setGroupedCart(newCart);
+    getUserCart();
   };
 
   const removeItem = async (key, index) => {

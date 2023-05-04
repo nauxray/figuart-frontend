@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BiShoppingBag } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -7,11 +7,13 @@ import Api from "../utils/api";
 import { formatDate } from "../utils/formatDate";
 import Button from "./Common/Button";
 import Loader from "./Common/Loader";
+import { UserContext } from "../context/userContext";
 
 const ProductListing = () => {
   const productId = useParams().id;
   const navigate = useNavigate();
   const api = new Api();
+  const { getUserCart } = useContext(UserContext);
 
   const [loading, setLoading] = useState(false);
   const [addingToCart, setAddingToCart] = useState(false);
@@ -33,6 +35,7 @@ const ProductListing = () => {
   const addProductToCart = async () => {
     setAddingToCart(true);
     const res = await api.addToCart(productId);
+    await getUserCart();
     setAddingToCart(false);
     if (res.createdItemId) {
       return toast.success(`Added ${product.name} to cart!`);

@@ -6,8 +6,10 @@ export const UserContext = React.createContext(null);
 
 const UserProvider = ({ children }) => {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
   const api = new Api();
+
+  const [user, setUser] = useState(null);
+  const [cart, setCart] = useState([]);
 
   const logout = async () => {
     await api.logout();
@@ -26,14 +28,27 @@ const UserProvider = ({ children }) => {
     setUser(user);
   };
 
+  const getUserCart = async () => {
+    const res = await api.getCart(user.id);
+    setCart(res);
+  };
+
   useEffect(() => {
     if (localStorage.getItem("jwtToken")?.length > 0) {
       fetchUser(localStorage.getItem("jwtToken"), "jwt");
     }
   }, []);
 
+  useEffect(() => {
+    if (user) {
+      getUserCart();
+    }
+  }, [user]);
+
   return (
-    <UserContext.Provider value={{ user, logout, fetchUser }}>
+    <UserContext.Provider
+      value={{ user, logout, fetchUser, cart, getUserCart }}
+    >
       {children}
     </UserContext.Provider>
   );
