@@ -33,9 +33,17 @@ const UserProvider = ({ children }) => {
     setCart(res);
   };
 
+  const checkJwtExpiry = (jwt) => {
+    const tokens = jwt.split(".");
+    const exp = JSON.parse(atob(tokens[1])).exp;
+    return !(Date.now() >= exp * 1000);
+  };
+
   useEffect(() => {
     if (localStorage.getItem("jwtToken")?.length > 0) {
-      fetchUser(localStorage.getItem("jwtToken"), "jwt");
+      if (checkJwtExpiry(localStorage.getItem("jwtToken"))) {
+        fetchUser(localStorage.getItem("jwtToken"), "jwt");
+      } else logout();
     }
   }, []);
 
