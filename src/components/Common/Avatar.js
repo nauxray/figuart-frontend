@@ -1,6 +1,6 @@
 import React from "react";
 
-const Avatar = ({ pfp, className: classnames = "" }) => {
+const Avatar = ({ pfp = "", className: classnames = "" }) => {
   return (
     <img
       className={"rounded-full " + classnames}
