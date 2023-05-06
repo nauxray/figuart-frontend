@@ -199,4 +199,15 @@ export default class Api extends ApiClient {
       return err.response;
     }
   };
+
+  // order apis
+  getUserOrders = async (userId) => {
+    try {
+      const results = await this.init()?.get(`orders/user/${userId}`);
+      return results.data;
+    } catch (err) {
+      handleError(err);
+      return null;
+    }
+  }
 }

@@ -1,30 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
-import { CiSearch } from "react-icons/ci";
+import React, { useContext, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 import { UserContext } from "../context/userContext";
 import { formatDate } from "../utils/formatDate";
 import Avatar from "./Common/Avatar";
 import Edit from "./Icons/Edit";
 import Layout from "./Layout/Layout";
+import Orders from "./Orders";
 
 const Account = () => {
-  const navigate = useNavigate();
   const { user } = useContext(UserContext);
-
   const [editing, setEditing] = useState(false);
-  const [searchInput, setSearchInput] = useState("");
-
   const isSeller = user?.role === "seller";
-
-  useEffect(() => {
-    if (!user) {
-      toast.error("Please login first!");
-      return navigate("/login");
-    }
-  }, []);
 
   return (
     <Layout>
@@ -59,7 +46,7 @@ const Account = () => {
               {editing ? <input name="email" type="email" /> : user?.email}
             </p>
             <p>
-              Password:
+              Password:{" "}
               {editing ? <input type="password" name="password" /> : "********"}
             </p>
             {isSeller && <p>Feature Duration: {user?.shop_featured} days</p>}
@@ -72,22 +59,7 @@ const Account = () => {
             )}
           </form>
         </div>
-        {/* {!isSeller && (
-          <div className="mt-8">
-            <h1 className="font-header text-2xl md:text-3xl break-all">
-              Your Orders (count)
-            </h1>
-            <div className="bg-lilac mt-4 flex items-center px-2 rounded-md w-full">
-              <input
-                className="bg-lilac text-black placeholder:text-disabledGrey outline-none rounded-md py-2 box-border w-full"
-                placeholder={`Search for orders by product name...`}
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-              />
-              <CiSearch className="cursor-pointer" color="black" size={25} />
-            </div>
-          </div>
-        )} */}
+        {!isSeller && <Orders />}
       </div>
     </Layout>
   );
