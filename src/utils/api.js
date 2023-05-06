@@ -136,6 +136,15 @@ export default class Api extends ApiClient {
       return err.response;
     }
   };
+  completePayment = async (orderId) => {
+    try {
+      const response = await this.init()?.get(`checkout/${orderId}`);
+      return response;
+    } catch (err) {
+      handleError(err);
+      return err.response;
+    }
+  };
   handleCheckoutSuccess = async (sessionId) => {
     try {
       const response = await this.init()?.post(
@@ -209,5 +218,5 @@ export default class Api extends ApiClient {
       handleError(err);
       return null;
     }
-  }
+  };
 }

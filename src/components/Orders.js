@@ -13,6 +13,7 @@ export default function Orders() {
   const [loadingOrders, setLoadingOrders] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [orders, setOrders] = useState([]);
+  const [fetchingStripeUrl, setFetchingStripeUrl] = useState(false);
 
   const sortByStatus = (orders) => {
     const sorted = {};
@@ -38,6 +39,14 @@ export default function Orders() {
       fetchOrders();
     }
   }, [user]);
+
+  const completePayment = async (orderId) => {
+    setFetchingStripeUrl(true);
+    const {
+      data: { url },
+    } = await api.completePayment(orderId);
+    return window.location.replace(url);
+  };
 
   return (
     <div className="mt-8">
@@ -111,6 +120,18 @@ export default function Orders() {
                         {orderItems?.length === 1 ? "" : "s"}
                       </p>
                       <p>Total: S${order.cost}</p>
+                      {status === "UNPAID" && (
+                        <p
+                          className={`underline hover:text-lilac transition cursor-pointer ${
+                            fetchingStripeUrl && "cursor-wait text-lilac"
+                          }`}
+                          onClick={() =>
+                            !fetchingStripeUrl && completePayment(order.id)
+                          }
+                        >
+                          Complete Payment
+                        </p>
+                      )}
                     </div>
                   </div>
                 );
