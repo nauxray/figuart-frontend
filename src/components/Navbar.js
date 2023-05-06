@@ -104,9 +104,9 @@ const Navbar = () => {
                 </div>
               </Link>
               <Link to="/cart" className="relative">
-                {cart.length > 0 && (
+                {cart?.length > 0 && (
                   <div className="font-semibold text-xs absolute top-[-0.8rem] right-[-0.5rem] bg-lilac rounded-md h-fit w-fit px-1 text-black border-white border">
-                    {cart.length}
+                    {cart?.length}
                   </div>
                 )}
                 <BiShoppingBag size={25} className="text-lilac" />

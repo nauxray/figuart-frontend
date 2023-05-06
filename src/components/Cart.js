@@ -21,7 +21,7 @@ const Cart = () => {
   const groupByShop = () => {
     const grouped = {};
 
-    cart.forEach((item) => {
+    cart?.forEach((item) => {
       const product = item.product;
       const shopName = product.shop_name;
 
@@ -61,7 +61,7 @@ const Cart = () => {
   };
   
   useEffect(() => {
-    cart.length > 0 ? groupByShop() : setGroupedCart({});
+    cart?.length > 0 ? groupByShop() : setGroupedCart({});
     setLoading(false);
   }, [cart]);
 
