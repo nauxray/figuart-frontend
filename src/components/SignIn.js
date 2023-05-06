@@ -15,17 +15,17 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   const submitForm = async (e) => {
     setLoading(true);
     e.preventDefault();
     const api = new Api();
-    const res = await api.login({ email, password });
+    const res = await api.login({ email, password, token: "token" });
 
     if (res.data.error) {
       setLoading(false);
-      return setError(true);
+      return setError(res.data.error);
     }
     if (res.data.user) {
       localStorage.setItem("jwtToken", res.data.token);
@@ -42,7 +42,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if (error && (email.trim().length > 0 || password.trim().length > 0)) {
-      setError(false);
+      setError("");
     }
   }, [email, password]);
 
@@ -88,9 +88,9 @@ const SignIn = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </section>
-              {error && (
+              {error?.length > 0 && (
                 <p className="text-red text-sm text-right font-medium">
-                  Invalid credentials!
+                  {error}
                 </p>
               )}
               {loading ? (
