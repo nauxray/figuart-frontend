@@ -67,8 +67,8 @@ export default function Orders() {
           <Loader className="mx-auto mt-8" />
         ) : (
           Object.keys(orders).map((status) => (
-            <details key={status} open>
-              <summary className="cursor-pointer text-sm text-lilac capitalize w-fit">
+            <details key={status} open className="mb-4">
+              <summary className="cursor-pointer text-lg text-lilac capitalize w-fit">
                 {status.toLowerCase()} ({orders[status].length})
               </summary>
               {orders[status]?.map((order) => {
