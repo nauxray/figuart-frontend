@@ -29,7 +29,14 @@ export default function Orders() {
 
   const fetchOrders = async () => {
     setLoadingOrders(true);
-    const data = await api.getUserOrders(user.id);
+    const data = await api.getUserOrders();
+    setOrders(sortByStatus(data));
+    setLoadingOrders(false);
+  };
+
+  const handleSearch = async () => {
+    setLoadingOrders(true);
+    const data = await api.searchUserOrders(searchInput);
     setOrders(sortByStatus(data));
     setLoadingOrders(false);
   };
@@ -59,8 +66,14 @@ export default function Orders() {
           placeholder={`Search for orders by order ID or product name...`}
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />
-        <CiSearch className="cursor-pointer" color="black" size={25} />
+        <CiSearch
+          className="cursor-pointer"
+          color="black"
+          size={25}
+          onClick={handleSearch}
+        />
       </div>
       <div className="flex flex-col gap-y-3 pt-8">
         {loadingOrders ? (
@@ -92,7 +105,7 @@ export default function Orders() {
                       <div className="flex gap-3 mt-4">
                         {Object.keys(grouped).map((i, index) => {
                           return (
-                            <div key={index} className="w-32">
+                            <div key={index} className="w-36">
                               <a
                                 href={`/product/${grouped[i].product_id}`}
                                 target="_blank"
@@ -100,11 +113,11 @@ export default function Orders() {
                               >
                                 <img
                                   src={grouped[i].img_url}
-                                  className="w-32 rounded-md overflow-hidden"
+                                  className="w-36 rounded-md overflow-hidden"
                                   alt={grouped[i].name}
                                 />
                               </a>
-                              <p className="text-sm pt-1">{grouped[i].name}</p>
+                              <p className="text-sm py-1">{grouped[i].name}</p>
                               <p className="text-sm">Qty: {grouped[i].qty}</p>
                               <p className="text-sm">
                                 Price: S${grouped[i].price}
@@ -120,6 +133,7 @@ export default function Orders() {
                         {orderItems?.length === 1 ? "" : "s"}
                       </p>
                       <p>Total: S${order.cost}</p>
+                      <p>Status: {order.status}</p>
                       {status === "UNPAID" && (
                         <p
                           className={`underline hover:text-lilac transition cursor-pointer ${

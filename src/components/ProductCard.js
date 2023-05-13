@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
   return (
     <Link
       to={`/product/${product.id}`}
-      className="bg-black border-2 flex flex-col max-h-[28rem] border-lilac rounded-md overflow-hidden md:max-h-[22rem] xl:w-[18rem] sm:w-[15rem] w-full max-md:mx-auto cursor-pointer hover:scale-105 transition-all duration-300"
+      className="bg-black border-2 flex flex-col max-h-[28rem] border-lilac rounded-md overflow-hidden md:max-h-[22rem] w-full max-md:mx-auto cursor-pointer hover:scale-105 transition-all duration-300"
     >
       <div className="w-full h-4/5 overflow-hidden bg-lilac flex items-center justify-center">
         {imgError ? (

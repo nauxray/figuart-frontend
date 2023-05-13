@@ -118,7 +118,7 @@ const Home = () => {
               {searchResults?.length ?? 0} Product
               {searchResults?.length === 1 ? "" : "s"} Found{" "}
             </h1>
-            <div className="flex flex-wrap gap-2">
+            <div className="grid gap-4 grid-cols-[repeat(auto-fit,_minmax(18rem,_1fr))]">
               {searchResults?.map((product) => (
                 <ProductCard key={"search" + product.id} product={product} />
               ))}
@@ -137,12 +137,15 @@ const Home = () => {
           <div id="top5" className="mt-8">
             <div className="flex gap-2 justify-center mb-6 items-center">
               <img src="/assets/icons/like.svg" alt="like" className="inline" />
-              <h1 className="font-header text-3xl">Top Products</h1>
+              <h1 className="font-header text-3xl">Top Selling Products</h1>
             </div>
-            <div className="flex flex-wrap gap-2 justify-center">
-              {topProducts?.map((product) => (
-                <ProductCard key={"top" + product.id} product={product} />
-              ))}
+            <div className="grid w-4/5 mx-auto gap-4 grid-cols-[repeat(auto-fit,_minmax(18rem,_1fr))] justify-items-center">
+              {topProducts?.map(
+                (product, index) =>
+                  index <= 4 && (
+                    <ProductCard key={"top" + product.id} product={product} />
+                  )
+              )}
             </div>
           </div>
           <div id="featured" className="mt-8">
@@ -153,6 +156,16 @@ const Home = () => {
             {featuredSellers?.map((seller) => (
               <SellerCard key={seller.id} shop={seller} />
             ))}
+          </div>
+          <div className="mt-8">
+            <h1 className="font-header text-3xl mb-6 text-center">
+              All Products
+            </h1>
+            <div className="grid gap-4 grid-cols-[repeat(auto-fit,_minmax(18rem,_1fr))]">
+              {topProducts?.map((product) => (
+                <ProductCard key={"top" + product.id} product={product} />
+              ))}
+            </div>
           </div>
         </>
       )}

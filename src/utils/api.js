@@ -51,10 +51,7 @@ export default class Api extends ApiClient {
   getTopProducts = async () => {
     try {
       const results = await this.init()?.get("products", {
-        params: {
-          limit: 5,
-          sortBy: "sales:desc",
-        },
+        params: { sortBy: "sales:desc" },
       });
       return results.data;
     } catch (err) {
@@ -210,9 +207,26 @@ export default class Api extends ApiClient {
   };
 
   // order apis
-  getUserOrders = async (userId) => {
+  getUserOrders = async () => {
     try {
-      const results = await this.init()?.get(`orders/user/${userId}`);
+      const results = await this.init()?.get(`orders/user`);
+      return results.data;
+    } catch (err) {
+      handleError(err);
+      return null;
+    }
+  };
+  searchUserOrders = async (searchTerm) => {
+    try {
+      const results = await this.init()?.post(
+        `orders/search`,
+        { searchTerm },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
       return results.data;
     } catch (err) {
       handleError(err);
