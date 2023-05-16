@@ -34,10 +34,17 @@ const SearchModal = ({
             className="text-black mr-2 box-border w-20 bg-lilac rounded-md px-2 py-1 border-2 border-white outline-none"
             type={"number"}
             min={0}
+            max={filters?.maxPrice > 0 ? filters?.maxPrice : null}
             value={filters?.minPrice ?? 0}
-            onChange={(e) =>
-              updateFilters(parseInt(e.target.value), "minPrice")
-            }
+            onChange={(e) => {
+              if (
+                (filters?.maxPrice > 0 &&
+                  +e.target.value <= filters?.maxPrice) ||
+                !filters?.maxPrice
+              ) {
+                updateFilters(+e.target.value, "minPrice");
+              }
+            }}
           />
           <div className="flex gap-2 items-center">
             <label className="w-20">Max Price:</label>
@@ -46,9 +53,7 @@ const SearchModal = ({
               type={"number"}
               min={0}
               value={filters?.maxPrice ?? 0}
-              onChange={(e) =>
-                updateFilters(parseInt(e.target.value), "maxPrice")
-              }
+              onChange={(e) => updateFilters(+e.target.value, "maxPrice")}
             />
           </div>
         </div>
@@ -59,9 +64,7 @@ const SearchModal = ({
             type={"number"}
             min={0}
             value={filters?.quantity ?? 0}
-            onChange={(e) =>
-              updateFilters(parseInt(e.target.value), "quantity")
-            }
+            onChange={(e) => updateFilters(+e.target.value, "quantity")}
           />
         </div>
         <div className="flex gap-2 items-center">
@@ -71,7 +74,7 @@ const SearchModal = ({
             type={"number"}
             min={0}
             value={filters?.limit ?? 0}
-            onChange={(e) => updateFilters(parseInt(e.target.value), "limit")}
+            onChange={(e) => updateFilters(+e.target.value, "limit")}
           />
         </div>
       </div>
