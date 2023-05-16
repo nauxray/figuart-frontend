@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+const Badge = ({ content }) => (
+  <p className="text-xs mr-1 inline-block w-fit bg-lilac text-black rounded-md px-2 py-0.5 font-medium">
+    {content}
+  </p>
+);
+
 const ProductCard = ({ product }) => {
   const [imgError, setImgError] = useState(false);
 
@@ -25,10 +31,14 @@ const ProductCard = ({ product }) => {
         <p className="font-header truncate">{product.name}</p>
         <p className="text-lilac flex-1 text-sm">{product.brand.name}</p>
         <div className="flex justify-between mt-auto items-end">
-          <p className="text-xs bg-lilac text-black rounded-md px-2 py-0.5 font-medium">
-            {product.series.name}
-          </p>
-          <p className="text-yellowLight mt-2 w-fit text-lg">
+          <div className="">
+            {product.tags?.length > 0 ? (
+              product.tags?.map((i) => <Badge key={i.id} content={i.name} />)
+            ) : (
+              <Badge content={product.series.name} />
+            )}
+          </div>
+          <p className="text-yellowLight mt-2 w-fit text-lg flex-shrink-0">
             ${parseFloat(product.price).toFixed(2)}
           </p>
         </div>
