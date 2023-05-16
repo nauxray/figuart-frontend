@@ -24,9 +24,14 @@ const ProductCard = ({ product }) => {
       <div className="flex flex-col flex-1 p-2">
         <p className="font-header truncate">{product.name}</p>
         <p className="text-lilac flex-1 text-sm">{product.brand.name}</p>
-        <p className="text-yellowLight mt-2 w-fit ml-auto text-lg">
-          ${parseFloat(product.price).toFixed(2)}
-        </p>
+        <div className="flex justify-between mt-auto items-end">
+          <p className="text-xs bg-lilac text-black rounded-md px-2 py-0.5 font-medium">
+            {product.series.name}
+          </p>
+          <p className="text-yellowLight mt-2 w-fit text-lg">
+            ${parseFloat(product.price).toFixed(2)}
+          </p>
+        </div>
       </div>
     </Link>
   );

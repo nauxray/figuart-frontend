@@ -77,9 +77,9 @@ export default class Api extends ApiClient {
       return null;
     }
   };
-  getMaterials = async () => {
+  getSeries = async () => {
     try {
-      const results = await this.init()?.get("materials");
+      const results = await this.init()?.get("series");
       return results.data;
     } catch (err) {
       handleError(err);

@@ -17,6 +17,8 @@ const Home = () => {
   const [featuredSellers, setFeaturedSellers] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const [brands, setBrands] = useState([]);
+  const [series, setSeries] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [filters, setFilters] = useState({});
   const [searchResults, setSearchResults] = useState(null);
@@ -29,6 +31,11 @@ const Home = () => {
     const featured = await api.getFeaturedSellers();
     setFeaturedSellers(featured);
     setLoading(false);
+
+    const brandsData = await api.getBrands();
+    setBrands(brandsData);
+    const seriesData = await api.getSeries();
+    setSeries(seriesData);
   };
 
   useEffect(() => {
@@ -46,10 +53,11 @@ const Home = () => {
 
   const countFiltersApplied = () => {
     let count = searchName.trim().length > 0 ? 1 : 0;
+    const list = ["brand", "series", "minPrice", "sortBy"];
     Object.keys(filters).forEach((key) => {
-      if (key === "limit" && filters[key] === 0) return;
-      if (key === "minPrice" && filters[key] === 0) return;
-      if (key === "sortBy" && filters[key] === "") return;
+      if (list.includes(key) && (+filters[key] === 0 || filters[key] === "")) {
+        return;
+      }
       count += 1;
     });
     return count;
@@ -87,7 +95,7 @@ const Home = () => {
             alt="filter"
             className="pt-1"
           />
-          {Object.keys(filters)?.length > 0 && (
+          {countFiltersApplied() > 0 && (
             <div className="font-semibold text-xs bg-lilac rounded-md h-fit w-fit px-1 text-black border-white border">
               {countFiltersApplied()}
             </div>
@@ -97,6 +105,8 @@ const Home = () => {
       <SearchModal
         isShowing={isShowing}
         hide={toggle}
+        brands={brands}
+        series={series}
         filters={filters}
         setFilters={setFilters}
         searchProducts={() => {
