@@ -43,14 +43,14 @@ const ProductListing = () => {
   };
 
   return (
-    <div className="mx-auto w-3/4 mt-12 flex gap-8">
+    <div className="mx-auto w-10/12 max-w-7xl max-md:flex-col mt-12 flex gap-8">
       {loading || !product ? (
         <div className="mx-auto w-fit my-40">
           <Loader />
         </div>
       ) : (
         <>
-          <div className="border-2 rounded border-lilac w-80 h-80 overflow-hidden">
+          <div className="border-2 rounded border-lilac mx-auto w-full h-full md:w-80 md:h-80 overflow-hidden">
             <img
               className="object-cover w-full h-full"
               src={product.img_url}

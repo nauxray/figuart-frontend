@@ -97,55 +97,57 @@ export default function Orders() {
                 return (
                   <div
                     key={order.id}
-                    className="flex border-lilac border-2 gap-y-2 gap-x-8 mt-4 rounded-lg p-4"
+                    className="border-lilac border-2 mt-4 rounded-lg p-4"
                   >
-                    <div>
-                      <p>Order ID: {order.id}</p>
-                      <p>Date: {formatDate(order.created_at)}</p>
-                      <div className="flex gap-3 mt-4">
-                        {Object.keys(grouped).map((i, index) => {
-                          return (
-                            <div key={index} className="w-36">
-                              <a
-                                href={`/product/${grouped[i].product_id}`}
-                                target="_blank"
-                                rel="noreferrer"
-                              >
-                                <img
-                                  src={grouped[i].img_url}
-                                  className="w-36 rounded-md overflow-hidden"
-                                  alt={grouped[i].name}
-                                />
-                              </a>
-                              <p className="text-sm py-1">{grouped[i].name}</p>
-                              <p className="text-sm">Qty: {grouped[i].qty}</p>
-                              <p className="text-sm">
-                                Price: S${grouped[i].price}
-                              </p>
-                            </div>
-                          );
-                        })}
+                    <div className="flex gap-y-2 gap-x-8">
+                      <div>
+                        <p>Order ID: {order.id}</p>
+                        <p>Date: {formatDate(order.created_at)}</p>
+                      </div>
+                      <div className="ml-auto text-right">
+                        <p>
+                          {orderItems?.length} item
+                          {orderItems?.length === 1 ? "" : "s"}
+                        </p>
+                        <p>Total: S${order.cost}</p>
+                        <p>Status: {order.status}</p>
+                        {status === "UNPAID" && (
+                          <p
+                            className={`underline hover:text-lilac transition cursor-pointer ${
+                              fetchingStripeUrl && "cursor-wait text-lilac"
+                            }`}
+                            onClick={() =>
+                              !fetchingStripeUrl && completePayment(order.id)
+                            }
+                          >
+                            Complete Payment
+                          </p>
+                        )}
                       </div>
                     </div>
-                    <div className="ml-auto text-right">
-                      <p>
-                        {orderItems?.length} item
-                        {orderItems?.length === 1 ? "" : "s"}
-                      </p>
-                      <p>Total: S${order.cost}</p>
-                      <p>Status: {order.status}</p>
-                      {status === "UNPAID" && (
-                        <p
-                          className={`underline hover:text-lilac transition cursor-pointer ${
-                            fetchingStripeUrl && "cursor-wait text-lilac"
-                          }`}
-                          onClick={() =>
-                            !fetchingStripeUrl && completePayment(order.id)
-                          }
-                        >
-                          Complete Payment
-                        </p>
-                      )}
+                    <div className="flex gap-3 mt-4 overflow-x-scroll pb-2">
+                      {Object.keys(grouped).map((i, index) => {
+                        return (
+                          <div key={index} className="min-w-[9rem] w-36">
+                            <a
+                              href={`/product/${grouped[i].product_id}`}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              <img
+                                src={grouped[i].img_url}
+                                className="w-36 rounded-md overflow-hidden"
+                                alt={grouped[i].name}
+                              />
+                            </a>
+                            <p className="text-sm py-1">{grouped[i].name}</p>
+                            <p className="text-sm">Qty: {grouped[i].qty}</p>
+                            <p className="text-sm">
+                              Price: S${grouped[i].price}
+                            </p>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 );

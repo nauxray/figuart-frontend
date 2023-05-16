@@ -118,7 +118,7 @@ const Home = () => {
               {searchResults?.length ?? 0} Product
               {searchResults?.length === 1 ? "" : "s"} Found{" "}
             </h1>
-            <div className="grid gap-4 grid-cols-[repeat(auto-fit,_minmax(18rem,_1fr))]">
+            <div className="grid gap-4 grid-cols-[repeat(auto-fill,_minmax(18rem,_1fr))]">
               {searchResults?.map((product) => (
                 <ProductCard key={"search" + product.id} product={product} />
               ))}
@@ -139,7 +139,7 @@ const Home = () => {
               <img src="/assets/icons/like.svg" alt="like" className="inline" />
               <h1 className="font-header text-3xl">Top Selling Products</h1>
             </div>
-            <div className="grid w-4/5 mx-auto gap-4 grid-cols-[repeat(auto-fit,_minmax(18rem,_1fr))] justify-items-center">
+            <div className="grid mx-auto gap-4 grid-cols-[repeat(auto-fit,_minmax(18rem,_1fr))] justify-items-center">
               {topProducts?.map(
                 (product, index) =>
                   index <= 4 && (
@@ -161,7 +161,7 @@ const Home = () => {
             <h1 className="font-header text-3xl mb-6 text-center">
               All Products
             </h1>
-            <div className="grid gap-4 grid-cols-[repeat(auto-fit,_minmax(18rem,_1fr))]">
+            <div className="grid gap-4 grid-cols-[repeat(auto-fill,_minmax(18rem,_1fr))]">
               {topProducts?.map((product) => (
                 <ProductCard key={"top" + product.id} product={product} />
               ))}
