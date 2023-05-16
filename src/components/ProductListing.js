@@ -88,12 +88,6 @@ const ProductListing = () => {
                 <p>Brand: {product.brand.name}</p>
                 <div>Sold by: {product.shop.username}</div>
                 <p>Listed on: {formatDate(product.created_at)}</p>
-                <p>
-                  Materials:{" "}
-                  {product.materials?.length > 0
-                    ? product.materials?.map((mat) => mat.name).join(", ")
-                    : "Not listed"}
-                </p>
                 <p>Series: {product.series.name}</p>
                 <p>
                   Series Release Date: {formatDate(product.series.release_date)}
