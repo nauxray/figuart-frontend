@@ -229,6 +229,14 @@ The products are arranged in a grid layout for accessibility. The user is able t
 
     - Once the order has been successfully cancelled, the page should re-fetch the orders history. After the loading is done, it should show that the order was cancelled and should no longer appear on the page.
 
+12. Test that user can update a shipped order to `COMPLETED` status once they have received the products.
+
+    - Go to the user account page. Scroll down to find the order history section.
+
+    - Find a shipped order. It should show a link on the right side that says "Order Received". Click on it.
+
+    - Once the order has been updated, the page should re-fetch the orders history. After the loading is done, it should show that the order status was changed to `COMPLETED`.
+
 ## Technologies Used
 
 1. ReactJS for frontend
