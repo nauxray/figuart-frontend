@@ -170,7 +170,7 @@ The products are arranged in a grid layout for accessibility. The user is able t
     
     - Click on the create account link.
     
-    - Enter "testing@gmail.com for the email. Enter "TesterAccount" for the username. Enter "password2" for the password fields.
+    - Enter `testing@gmail.com` for the email. Enter `TesterAccount` for the username. Enter `password2` for the password fields.
     
     - Click on the sign up button.
     
@@ -184,7 +184,7 @@ The products are arranged in a grid layout for accessibility. The user is able t
 
     - The orders should display the order ID, date, products bought, number of products bought, total amount paid, and status.
 
-    - The user should see a link to complete payment for orders that are unpaid, and a link to change the order status from "SHIPPED" to "COMPLETED".
+    - The user should see a link to complete payment for orders that are unpaid, and a link to change the order status from `SHIPPED` to `COMPLETED`.
 
 9. Test that user can search for orders.
 
