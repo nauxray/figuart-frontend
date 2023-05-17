@@ -27,7 +27,7 @@ const Navbar = () => {
         <Link to="/">
           <img src="/logos/logo2.svg" alt="logo" className="w-36" />
         </Link>
-        <Link to="/" className={user ? "" : "pointer-events-none"}>
+        <Link to="/cart" className={user ? "" : "pointer-events-none"}>
           <BiShoppingBag size={25} className="text-lilac" />
         </Link>
       </div>

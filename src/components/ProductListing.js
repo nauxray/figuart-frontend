@@ -23,7 +23,6 @@ const ProductListing = () => {
     setLoading(true);
     const data = await api.getProduct(productId);
     setProduct(data);
-    console.log(data);
     setLoading(false);
   };
 
