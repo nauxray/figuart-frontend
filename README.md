@@ -8,8 +8,6 @@ Live Website(React frontend ecommerce site): [https://figuart.netlify.app](https
 
 Live Website(Backend shop owner/admin portal): [https://figuart-backend.onrender.com](https://figuart-backend.onrender.com/)
 
-screenshots on desktop, laptop, mobile
-
 ## Sample Logins
 
 **NOTE: Buyer roles can only login on the frontend, Seller roles can only login on the backend.**
@@ -19,6 +17,22 @@ screenshots on desktop, laptop, mobile
 Email: buyer@gmail.com
 
 Password: password
+
+## Desktop (2560x1440)
+![image](https://github.com/nauxray/figuart-frontend/assets/16387210/be06b7c7-a16e-4dfb-8685-09813352dded)
+![image](https://github.com/nauxray/figuart-frontend/assets/16387210/46a1099d-cea8-4058-afc8-3723238fdba6)
+![image](https://github.com/nauxray/figuart-frontend/assets/16387210/33a3363c-7f31-4312-8906-abdad3bb9bd9)
+
+## Tablet (IPad Air, 820x1180)
+![image](https://github.com/nauxray/figuart-frontend/assets/16387210/16c37008-6c73-41f5-bc54-f2ea6a61e72c)
+![image](https://github.com/nauxray/figuart-frontend/assets/16387210/8716d16c-df7c-467b-a6c7-fa9e4935eb4e)
+![image](https://github.com/nauxray/figuart-frontend/assets/16387210/32f2a7f6-d39c-4d00-98de-29e2de0049c2)
+
+## Mobile (iPhone 12 Pro, 390x844)
+![image](https://github.com/nauxray/figuart-frontend/assets/16387210/c4b9747c-2899-4369-b86d-531601d02576)
+![image](https://github.com/nauxray/figuart-frontend/assets/16387210/addc1cbb-4c9d-49f8-bc1c-ec5f02809611)
+![image](https://github.com/nauxray/figuart-frontend/assets/16387210/cd2d96c9-0dbd-4d36-bfdf-5783e3400be5)
+
 
 **Seller (on backend https://figuart-backend.onrender.com)**
 
