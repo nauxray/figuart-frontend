@@ -1,6 +1,8 @@
 # Figuart
 
-**Figuart** is an ecommerce website for people to buy figurines. People often get excited when they see a figurine or blind box from their favourite TV show or series. I think this excitement is present in people of all ages, from children to adults. This makes figurines appealing to everyone, which greatly increases the profitability of this business. As the buyer, they get to buy and collect figurines that they love, as well as experience the anticipation as they wonder what they got in their blind box. In addition to making profit, I hope to help children and adults alike experience that excitement of getting a brand new figurine of their favourite character, or opening a blind box and getting the one they wanted most.
+**Figuart** is an ecommerce website for people to buy figurines. People often get excited when they see a figurine or blind box from their favourite TV show or series. I think this excitement is present in people of all ages, from children to adults. This makes figurines appealing to everyone, which greatly increases the profitability of this business. As the buyer, they get to buy and collect figurines that they love, as well as experience the anticipation as they wonder what they got in their blind box.
+
+In addition to making profit, I hope to help children and adults alike experience that excitement of getting a brand new figurine of their favourite character, or opening a blind box and getting the one they wanted most.
 
 Live Website(React frontend ecommerce site): [https://figuart.netlify.app](https://figuart.netlify.app)
 
@@ -32,8 +34,22 @@ Password: password
 ![ER-diagram](https://github.com/nauxray/figuart-frontend/assets/16387210/072d5910-ea1d-40fc-8c65-0c2c8ce8642f)
 
 ## Frontend Structure
+![image](https://github.com/nauxray/figuart-frontend/assets/16387210/d1a05375-8590-4b35-a30a-c14d4e432930)
 
-wireframe, explain flow of web app
+Above is a sitemap depicting the pages and features in the website. 
+
+Starting from the homepage, the user can see the top rated products and featured sellers. Below that, all products will be listed for them to browse. There is a search bar, as well as a filter/sort button at the top of the page, allowing them to easily find the product they want.
+
+Upon clicking on a product card, the user is redirected to the product listing page. On this page, it shows the product details such as product name, description, price, and quantity left. If the user decides to buy the product, they can add it to their cart here.
+
+The navigation bar allows the user to view their account. On the account page, they can view their profile details, edit their profile and view their order history.
+The orders are organized according to their status. For each order, the user can see the products they bought, the amount they paid, the order status and date they placed the order. For orders that have not been paid for, they can also complete payment here. In future, there will be a feature for users to cancel an order that they have not paid for.
+
+The login button is located at the top right corner of the page, which is intuitive for most users. On the login page, the user can login to an existing account or create a new account. Upon logging in, they are then directed back to the homepage to encourage product browsing.
+
+The cart button is located at the top right corner of the page, to the left of the login button. This is also intuitive design and very common across other ecommerce webapps. This button also has a badge showing how many items are in the user's cart. On the cart page, the user can see the products that are in their cart, organized by the shop that the products are from. Here, the user can edit the number of products they want to buy, before checking out their cart. 
+
+When the user checks out their cart, they are redirected to Stripe's payment page to make payment.
 
 ## Design
 
