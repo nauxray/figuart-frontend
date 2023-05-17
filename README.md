@@ -18,6 +18,12 @@ Email: buyer@gmail.com
 
 Password: password
 
+**Seller (on backend https://figuart-backend.onrender.com)**
+
+Email: abc@gmail.com
+
+Password: password
+
 ## Desktop (2560x1440)
 ![image](https://github.com/nauxray/figuart-frontend/assets/16387210/be06b7c7-a16e-4dfb-8685-09813352dded)
 ![image](https://github.com/nauxray/figuart-frontend/assets/16387210/46a1099d-cea8-4058-afc8-3723238fdba6)
@@ -32,13 +38,6 @@ Password: password
 ![image](https://github.com/nauxray/figuart-frontend/assets/16387210/c4b9747c-2899-4369-b86d-531601d02576)
 ![image](https://github.com/nauxray/figuart-frontend/assets/16387210/addc1cbb-4c9d-49f8-bc1c-ec5f02809611)
 ![image](https://github.com/nauxray/figuart-frontend/assets/16387210/cd2d96c9-0dbd-4d36-bfdf-5783e3400be5)
-
-
-**Seller (on backend https://figuart-backend.onrender.com)**
-
-Email: abc@gmail.com
-
-Password: password
 
 ## Database Structure
 
