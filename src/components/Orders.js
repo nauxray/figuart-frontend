@@ -13,7 +13,7 @@ export default function Orders() {
   const [loadingOrders, setLoadingOrders] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [orders, setOrders] = useState([]);
-  const [fetchingStripeUrl, setFetchingStripeUrl] = useState(false);
+  const [orderActionLoading, setOrderActionLoading] = useState(false);
 
   const sortByStatus = (orders) => {
     const sorted = {};
@@ -48,7 +48,7 @@ export default function Orders() {
   }, [user]);
 
   const completePayment = async (orderId) => {
-    setFetchingStripeUrl(true);
+    setOrderActionLoading(true);
     const {
       data: { url },
     } = await api.completePayment(orderId);
@@ -56,9 +56,16 @@ export default function Orders() {
   };
 
   const cancel = async (orderId) => {
-    setFetchingStripeUrl(true);
+    setOrderActionLoading(true);
     await api.cancelOrder(orderId);
-    setFetchingStripeUrl(false);
+    setOrderActionLoading(false);
+    fetchOrders();
+  };
+
+  const updateReceived = async (orderId) => {
+    setOrderActionLoading(true);
+    await api.orderReceived(orderId);
+    setOrderActionLoading(false);
     fetchOrders();
   };
 
@@ -122,25 +129,37 @@ export default function Orders() {
                           <>
                             <p
                               className={`underline hover:text-lilac transition cursor-pointer ${
-                                fetchingStripeUrl && "cursor-wait text-lilac"
+                                orderActionLoading && "cursor-wait text-lilac"
                               }`}
                               onClick={() =>
-                                !fetchingStripeUrl && completePayment(order.id)
+                                !orderActionLoading && completePayment(order.id)
                               }
                             >
                               Complete Payment
                             </p>
                             <p
                               className={`underline hover:text-lilac transition cursor-pointer ${
-                                fetchingStripeUrl && "cursor-wait text-lilac"
+                                orderActionLoading && "cursor-wait text-lilac"
                               }`}
                               onClick={() =>
-                                !fetchingStripeUrl && cancel(order.id)
+                                !orderActionLoading && cancel(order.id)
                               }
                             >
                               Cancel Order
                             </p>
                           </>
+                        )}
+                        {status === "SHIPPED" && (
+                          <p
+                            className={`underline hover:text-lilac transition cursor-pointer ${
+                              orderActionLoading && "cursor-wait text-lilac"
+                            }`}
+                            onClick={() =>
+                              !orderActionLoading && updateReceived(order.id)
+                            }
+                          >
+                            Order Received
+                          </p>
                         )}
                       </div>
                     </div>

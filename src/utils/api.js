@@ -242,4 +242,13 @@ export default class Api extends ApiClient {
       return null;
     }
   };
+  orderReceived = async (id) => {
+    try {
+      const results = await this.init()?.get(`orders/received/${id}`);
+      return results.data;
+    } catch (err) {
+      handleError(err);
+      return null;
+    }
+  };
 }
