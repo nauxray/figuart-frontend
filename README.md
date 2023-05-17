@@ -82,9 +82,136 @@ The products are arranged in a grid layout for accessibility. The user is able t
 
 ## User Stories
 
-3-5 user stories
+1. As a user, I want to view different figurines easily and get important information at a glance so that I can efficiently browse for figurines I like. 
+
+    - Products should be displayed in grid format to allow easy browsing.
+    
+    - Each figurine product should display its image, name, brand, its tags or series, and the price without clicking in.
+
+2. As a user, I want to be able to search for a specific figurine by different criteria such as name, series etc so that I can purchase it.
+
+    - There should be a search system to search by product name.
+    
+    - There should be a filtering system to ensure users can efficiently find the figurine they want based on the brand, series or tags.
+
+3. As a user, I want to see the top rated figurines easily so that I can browse figurines even if I don't have a specific figurine in mind.
+
+    - There should be a section on the homepage showing the top rated figurines.
+
+4. As a user, I want to be able to see my order history so that I can keep track of what I have bought and check that the order was placed correctly.
+
+    - There should be a section that displays the user's order history. As this is related to the user account, it should be put with other account details.
+    - The order history should show the products bought, total amount paid, the order status as well as the date that it was placed. 
+
+5. As a user, I want to be able to change my mind at any point before making payment, without losing the products that I added to cart. 
+
+    - If user changes their mind before making payment on the Stripe payment page, their order is saved as "UNPAID" status and can be viewed under their order history.
+    - The user should be able to complete the purchase or cancel the order from there.
 
 ## Testing
+
+1. Test that prodcuts are displayed in grid format and show relevant information without clicking in.
+
+    - On home page, scroll down to find the All Products section.
+    
+    - The products should be displayed in a grid and display its name, image, brand, tags/series, and price without clicking in.
+
+2. Test that top selling products are displayed correctly
+
+    - On home page, there should be a section that shows the top 5 best selling products.
+
+3. Test that user can search for products by its name, or filter by other fields and sort by different criterias.
+
+    - Use the search bar on the home page to enter “s”. Hit enter.
+    
+    - The search results should display products that contain the search term “s”.
+    
+    - Click on the filter/sort button below the search bar. On the modal, choose "Funko" for the brand.
+    
+    - Click on the search button on the modal to apply the filter. The search results should now only display products that contain “s” in their name and are from the brand "Funko".
+
+4. Test that user can add products to cart.
+    
+    - On home page, click on any product. User should be redirected to the product details page, where an "Add to cart" button can be found.
+    
+    - Click on the add to cart button.
+    
+    - A toaster should popup, saying that the product was successfully added to the user's cart. 
+    
+    - Click on the Cart icon on the top right corner. If it is not there, login first.
+    
+    - User should be redirected to the cart page, where they should see the product that was added to the cart.
+
+5. Test that user can checkout their cart.
+    
+    - Go to the cart page by clicking the cart icon on the top right corner of the page. If it is not there, please login first.
+    
+    - On the cart page, click checkout.
+    
+    - User should be redirected to a Stripe payment page. 
+    
+    - Enter 4242424242 for all the credentials and click on Pay.
+    
+    - On successful payment, user should be redirected to the website, to a page thanking them for the purchase.
+    
+    - On the website, go to the user account page. The order history should reflect the order they just paid for.
+
+6. Test that user can login.
+    
+    - Go to the login page. 
+    
+    - Enter the sample login credentials for the buyer account. Click on sign in.
+    
+    - On successful login, user should be redirected to the homepage.
+
+7. Test that user can create a new account.
+    
+    - Go to the login page.
+    
+    - Click on the create account link.
+    
+    - Enter "testing@gmail.com for the email. Enter "TesterAccount" for the username. Enter "password2" for the password fields.
+    
+    - Click on the sign up button.
+    
+    - On successful account creation, user should be logged in automatically and redirected to the homepage.
+
+8. Test that user can view their order history.
+
+    - Go to the user account page. Scroll down to find the order history section.
+    
+    - The orders should be organized by their status, in collapsible drop downs.
+
+    - The orders should display the order ID, date, products bought, number of products bought, total amount paid, and status.
+
+    - The user should see a link to complete payment for orders that are unpaid, and a link to change the order status from "SHIPPED" to "COMPLETED".
+
+9. Test that user can search for orders.
+
+    - Go to the user account page. Scroll down to find the order history section.
+
+    - There should be a search bar that allows user to search for orders by its order ID or product name.
+
+    - Type "s" into the search bar and hit enter.
+
+    - Only orders that contain products with "s" in their names should appear.
+
+    - Clear the text in the search bar and enter one of the order IDs in the order history. Hit enter.
+
+    - Only orders that have the same order ID should appear.
+
+10. Test that user can complete payment for an unpaid order.
+
+    - Go to the user account page. Scroll down to find the order history section.
+
+    - Find an unpaid order. It should show a link on the right side that says "Complete Payment". Click on it.
+
+    - User should be redirected to a Stripe payment page, where they can enter the fake credentials and click Pay.
+
+    - On successful payment, user should be redirected back to the website, to a page thanking them for the purchase.
+
+    - On the website, go back to the order history section. It should show that that order has been paid for.
+
 
 ## Technologies Used
 
@@ -148,10 +275,10 @@ The products are arranged in a grid layout for accessibility. The user is able t
 
 - [Regex for checking valid image url](https://bobbyhadz.com/blog/javascript-check-if-url-is-image)
 
-- [Logo created using Canva, cat vector images from Canva](https://www.canva.com/design/DAFSqBjsPpI/X1CWMmWEWr0p_fyfaEkY1g/view?utm_content=DAFSqBjsPpI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
-
 - [Favicon generator](https://favicon.io/)
 
 - [Disable blue highlight on mobile](https://stackoverflow.com/questions/25704650/disable-blue-highlight-when-touch-press-object-with-cursorpointer)
 
 - [Disable Google tap to search feature on mobile](https://stackoverflow.com/questions/60984046/how-to-disable-onclick-text-highlight-in-mobile-browser-chrome)
+
+- Logo created using Canva, cat vector images from Canva
