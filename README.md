@@ -27,16 +27,20 @@ Email: abc@gmail.com
 Password: password
 
 ## Database Structure
+
 ### Logical schema diagram
+
 ![db-schema](https://github.com/nauxray/figuart-frontend/assets/16387210/18f392e9-fdbf-4e7f-9b04-d130b672bf83)
 
 ### ER Diagram
+
 ![ER-diagram](https://github.com/nauxray/figuart-frontend/assets/16387210/072d5910-ea1d-40fc-8c65-0c2c8ce8642f)
 
 ## Frontend Structure
+
 ![image](https://github.com/nauxray/figuart-frontend/assets/16387210/d1a05375-8590-4b35-a30a-c14d4e432930)
 
-Above is a sitemap depicting the pages and features in the website. 
+Above is a sitemap depicting the pages and features in the website.
 
 Starting from the homepage, the user can see the top rated products and featured sellers. Below that, all products will be listed for them to browse. There is a search bar, as well as a filter/sort button at the top of the page, allowing them to easily find the product they want.
 
@@ -47,7 +51,7 @@ The orders are organized according to their status. For each order, the user can
 
 The login button is located at the top right corner of the page, which is intuitive for most users. On the login page, the user can login to an existing account or create a new account. Upon logging in, they are then directed back to the homepage to encourage product browsing.
 
-The cart button is located at the top right corner of the page, to the left of the login button. This is also intuitive design and very common across other ecommerce webapps. This button also has a badge showing how many items are in the user's cart. On the cart page, the user can see the products that are in their cart, organized by the shop that the products are from. Here, the user can edit the number of products they want to buy, before checking out their cart. 
+The cart button is located at the top right corner of the page, to the left of the login button. This is also intuitive design and very common across other ecommerce webapps. This button also has a badge showing how many items are in the user's cart. On the cart page, the user can see the products that are in their cart, organized by the shop that the products are from. Here, the user can edit the number of products they want to buy, before checking out their cart.
 
 When the user checks out their cart, they are redirected to Stripe's payment page to make payment.
 
@@ -56,6 +60,7 @@ When the user checks out their cart, they are redirected to Stripe's payment pag
 You can view the Figma design file [here](https://www.figma.com/file/oE3eGMiQszt11f7dDAfgfE/Figuart?type=design&node-id=0%3A1&t=KbENYJkPkM8J5wky-1)
 
 ### Fonts
+
 ![image](https://github.com/nauxray/figuart-frontend/assets/16387210/2fc9efad-bbe4-45ae-a18a-41bf520982e1)
 
 For the fonts used in this website, I decided to use Prosto One and Inter.
@@ -65,140 +70,144 @@ Prosto One is a serif, bold font that is good for catching user attention. It is
 On the other hand, Inter is a sans-serif font that is very minimal and gives the website a clean look. It is used to convey information such as product descriptions to the user, as its sans-serif style makes it very easy on the eyes and easy to read. It nicely contrasts with the louder Prosto One to give an interesting yet cohesive feel to the website.
 
 ### Colors
+
 ![image](https://github.com/nauxray/figuart-frontend/assets/16387210/3d6f6aa6-da95-4b3f-9592-743dac9a4df4)
 
 For the website's color palette, I decided to use black, lilac, pale yellow, and white.
 
-Black is used for the background and some texts as I wanted the website to be dark overall, which is easy on the eyes and allows users to browse the products for longer periods of time. 
+Black is used for the background and some texts as I wanted the website to be dark overall, which is easy on the eyes and allows users to browse the products for longer periods of time.
 
 Lilac, pale yellow and white are used for contrast with the dark background. The calming colors are pleasing to the eyes and also help to make the user feel relaxed and want to browse the products more.
 
 ### Image style & Layout
+
 Most images on the website are rounded at the corners. This gives them a more clean and polished feel, as compared to sharp corners.
 
-For the layout of the home page, I put the top rated products and featured sellers in the middle of the page. This makes it the first thing that users will see once they enter the website, which promotes these products and sellers to them. 
+For the layout of the home page, I put the top rated products and featured sellers in the middle of the page. This makes it the first thing that users will see once they enter the website, which promotes these products and sellers to them.
 
 The products are arranged in a grid layout for accessibility. The user is able to view multiple products at once, and the organized look improves the browsing experience for them as well. With the layout like this, the user is able to browse products for long periods of time without getting tired.
 
 ## User Stories
 
-1. As a user, I want to view different figurines easily and get important information at a glance so that I can efficiently browse for figurines I like. 
+1. As a user, I want to view different figurines easily and get important information at a glance so that I can efficiently browse for figurines I like.
 
-    - Products should be displayed in grid format to allow easy browsing.
-    
-    - Each figurine product should display its image, name, brand, its tags or series, and the price without clicking in.
+   - Products should be displayed in grid format to allow easy browsing.
+
+   - Each figurine product should display its image, name, brand, its tags or series, and the price without clicking in.
 
 2. As a user, I want to be able to search for a specific figurine by different criteria such as name, series etc so that I can purchase it.
 
-    - There should be a search system to search by product name.
-    
-    - There should be a filtering system to ensure users can efficiently find the figurine they want based on the brand, series or tags.
+   - There should be a search system to search by product name.
+
+   - There should be a filtering system to ensure users can efficiently find the figurine they want based on the brand, series or tags.
 
 3. As a user, I want to see the top rated figurines easily so that I can browse figurines even if I don't have a specific figurine in mind.
 
-    - There should be a section on the homepage showing the top rated figurines.
+   - There should be a section on the homepage showing the top rated figurines.
 
 4. As a user, I want to be able to see my order history so that I can keep track of what I have bought and check that the order was placed correctly.
 
-    - There should be a section that displays the user's order history. As this is related to the user account, it should be put with other account details.
-    - The order history should show the products bought, total amount paid, the order status as well as the date that it was placed. 
+   - There should be a section that displays the user's order history. As this is related to the user account, it should be put with other account details.
 
-5. As a user, I want to be able to change my mind at any point before making payment, without losing the products that I added to cart. 
+   - The order history should show the products bought, total amount paid, the order status as well as the date that it was placed.
 
-    - If user changes their mind before making payment on the Stripe payment page, their order is saved as "UNPAID" status and can be viewed under their order history.
-    - The user should be able to complete the purchase or cancel the order from there.
+5. As a user, I want to be able to change my mind at any point before making payment, without losing the products that I added to cart.
+
+   - If user changes their mind before making payment on the Stripe payment page, their order is saved as "UNPAID" status and can be viewed under their order history.
+
+   - The user should be able to complete the purchase or cancel the order from there.
 
 ## Testing
 
-1. Test that prodcuts are displayed in grid format and show relevant information without clicking in.
+1. Test that products are displayed in grid format and show relevant information without clicking in.
 
-    - On home page, scroll down to find the All Products section.
-    
-    - The products should be displayed in a grid and display its name, image, brand, tags/series, and price without clicking in.
+   - On home page, scroll down to find the All Products section.
+
+   - The products should be displayed in a grid and display its name, image, brand, tags/series, and price without clicking in.
 
 2. Test that top selling products are displayed correctly
 
-    - On home page, there should be a section that shows the top 5 best selling products.
+   - On home page, there should be a section that shows the top 5 best selling products.
 
 3. Test that user can search for products by its name, or filter by other fields and sort by different criterias.
 
-    - Use the search bar on the home page to enter “s”. Hit enter.
-    
-    - The search results should display products that contain the search term “s”.
-    
-    - Click on the filter/sort button below the search bar. On the modal, choose "Funko" for the brand.
-    
-    - Click on the search button on the modal to apply the filter. The search results should now only display products that contain “s” in their name and are from the brand "Funko".
+   - Use the search bar on the home page to enter “s”. Hit enter.
+
+   - The search results should display products that contain the search term “s”.
+
+   - Click on the filter/sort button below the search bar. On the modal, choose "Funko" for the brand.
+
+   - Click on the search button on the modal to apply the filter. The search results should now only display products that contain “s” in their name and are from the brand "Funko".
 
 4. Test that user can add products to cart.
-    
-    - On home page, click on any product. User should be redirected to the product details page, where an "Add to cart" button can be found.
-    
-    - Click on the add to cart button.
-    
-    - A toaster should popup, saying that the product was successfully added to the user's cart. 
-    
-    - Click on the Cart icon on the top right corner. If it is not there, login first.
-    
-    - User should be redirected to the cart page, where they should see the product that was added to the cart.
+
+   - On home page, click on any product. User should be redirected to the product details page, where an "Add to cart" button can be found.
+
+   - Click on the add to cart button.
+
+   - A toaster should popup, saying that the product was successfully added to the user's cart.
+
+   - Click on the Cart icon on the top right corner. If it is not there, login first.
+
+   - User should be redirected to the cart page, where they should see the product that was added to the cart.
 
 5. Test that user can checkout their cart.
-    
-    - Go to the cart page by clicking the cart icon on the top right corner of the page. If it is not there, please login first.
-    
-    - On the cart page, click checkout.
-    
-    - User should be redirected to a Stripe payment page. 
-    
-    - Enter 4242424242 for all the credentials and click on Pay.
-    
-    - On successful payment, user should be redirected to the website, to a page thanking them for the purchase.
-    
-    - On the website, go to the user account page. The order history should reflect the order they just paid for.
+
+   - Go to the cart page by clicking the cart icon on the top right corner of the page. If it is not there, please login first.
+
+   - On the cart page, click checkout.
+
+   - User should be redirected to a Stripe payment page.
+
+   - Enter `4242424242` for all the credentials and click on Pay.
+
+   - On successful payment, user should be redirected to the website, to a page thanking them for the purchase.
+
+   - On the website, go to the user account page. The order history should reflect the order they just paid for.
 
 6. Test that user can login.
-    
-    - Go to the login page. 
-    
-    - Enter the sample login credentials for the buyer account. Click on sign in.
-    
-    - On successful login, user should be redirected to the homepage.
+
+   - Go to the login page.
+
+   - Enter the sample login credentials for the buyer account. Click on sign in.
+
+   - On successful login, user should be redirected to the homepage.
 
 7. Test that user can create a new account.
-    
-    - Go to the login page.
-    
-    - Click on the create account link.
-    
-    - Enter `testing@gmail.com` for the email. Enter `TesterAccount` for the username. Enter `password2` for the password fields.
-    
-    - Click on the sign up button.
-    
-    - On successful account creation, user should be logged in automatically and redirected to the homepage.
+
+   - Go to the login page.
+
+   - Click on the create account link.
+
+   - Enter `testing@gmail.com` for the email. Enter `TesterAccount` for the username. Enter `password2` for the password fields.
+
+   - Click on the sign up button.
+
+   - On successful account creation, user should be logged in automatically and redirected to the homepage.
 
 8. Test that user can view their order history.
 
-    - Go to the user account page. Scroll down to find the order history section.
-    
-    - The orders should be organized by their status, in collapsible drop downs.
+   - Go to the user account page. Scroll down to find the order history section.
 
-    - The orders should display the order ID, date, products bought, number of products bought, total amount paid, and status.
+   - The orders should be organized by their status, in collapsible drop downs.
 
-    - The user should see a link to complete payment for orders that are unpaid, and a link to change the order status from `SHIPPED` to `COMPLETED`.
+   - The orders should display the order ID, date, products bought, number of products bought, total amount paid, and status.
+
+   - The user should see a link to complete payment for orders that are unpaid, and a link to change the order status from `SHIPPED` to `COMPLETED`.
 
 9. Test that user can search for orders.
 
-    - Go to the user account page. Scroll down to find the order history section.
+   - Go to the user account page. Scroll down to find the order history section.
 
-    - There should be a search bar that allows user to search for orders by its order ID or product name.
+   - There should be a search bar that allows user to search for orders by its order ID or product name.
 
-    - Type "s" into the search bar and hit enter.
+   - Type "s" into the search bar and hit enter.
 
-    - Only orders that contain products with "s" in their names should appear.
+   - Only orders that contain products with "s" in their names should appear.
 
-    - Clear the text in the search bar and enter one of the order IDs in the order history. Hit enter.
+   - Clear the text in the search bar and enter one of the order IDs in the order history. Hit enter.
 
-    - Only orders that have the same order ID should appear.
+   - Only orders that have the same order ID should appear.
 
 10. Test that user can complete payment for an unpaid order.
 
@@ -212,6 +221,13 @@ The products are arranged in a grid layout for accessibility. The user is able t
 
     - On the website, go back to the order history section. It should show that that order has been paid for.
 
+11. Test that user can cancel an unpaid order.
+
+    - Go to the user account page. Scroll down to find the order history section.
+
+    - Find an unpaid order. It should show a link on the right side that says "Cancel Order". Click on it.
+
+    - Once the order has been successfully cancelled, the page should re-fetch the orders history. After the loading is done, it should show that the order was cancelled and should no longer appear on the page.
 
 ## Technologies Used
 
@@ -227,7 +243,7 @@ The products are arranged in a grid layout for accessibility. The user is able t
 
 1. react-router-dom: https://github.com/remix-run/react-router (for routing different pages & redirecting user)
 
-2. axios: https://github.com/axios/axios (to call various apis using the api utility class)
+2. axios: https://github.com/axios/axios (to call apis)
 
 3. react-icons: https://github.com/react-icons/react-icons (various icons throughout the app)
 
