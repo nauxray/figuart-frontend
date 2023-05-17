@@ -55,6 +55,13 @@ export default function Orders() {
     return window.location.replace(url);
   };
 
+  const cancel = async (orderId) => {
+    setFetchingStripeUrl(true);
+    await api.cancelOrder(orderId);
+    setFetchingStripeUrl(false);
+    fetchOrders();
+  };
+
   return (
     <div className="mt-8">
       <h1 className="font-header text-2xl md:text-3xl break-all">
@@ -112,16 +119,28 @@ export default function Orders() {
                         <p>Total: S${order.cost}</p>
                         <p>Status: {order.status}</p>
                         {status === "UNPAID" && (
-                          <p
-                            className={`underline hover:text-lilac transition cursor-pointer ${
-                              fetchingStripeUrl && "cursor-wait text-lilac"
-                            }`}
-                            onClick={() =>
-                              !fetchingStripeUrl && completePayment(order.id)
-                            }
-                          >
-                            Complete Payment
-                          </p>
+                          <>
+                            <p
+                              className={`underline hover:text-lilac transition cursor-pointer ${
+                                fetchingStripeUrl && "cursor-wait text-lilac"
+                              }`}
+                              onClick={() =>
+                                !fetchingStripeUrl && completePayment(order.id)
+                              }
+                            >
+                              Complete Payment
+                            </p>
+                            <p
+                              className={`underline hover:text-lilac transition cursor-pointer ${
+                                fetchingStripeUrl && "cursor-wait text-lilac"
+                              }`}
+                              onClick={() =>
+                                !fetchingStripeUrl && cancel(order.id)
+                              }
+                            >
+                              Cancel Order
+                            </p>
+                          </>
                         )}
                       </div>
                     </div>

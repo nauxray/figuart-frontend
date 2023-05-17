@@ -233,4 +233,13 @@ export default class Api extends ApiClient {
       return null;
     }
   };
+  cancelOrder = async (id) => {
+    try {
+      const results = await this.init()?.delete(`orders/${id}`);
+      return results.data;
+    } catch (err) {
+      handleError(err);
+      return null;
+    }
+  };
 }
